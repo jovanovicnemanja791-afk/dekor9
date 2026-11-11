@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="_ds/modernist-dd949104-70d6-41c0-bfdd-7dabdc8d386d/styles.css">
+  <script src="_ds/modernist-dd949104-70d6-41c0-bfdd-7dabdc8d386d/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; }
+    img, video { max-width: 100%; }
+    body { overflow-x: hidden; }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); text-wrap: pretty; }
+    :root {
+      --color-bg: #f4f1ec;
+      --color-accent: #a8432a;
+      --color-accent-500: #a8432a;
+      --color-accent-600: #94381f;
+      --color-accent-700: #7e3019;
+      --color-accent-2-500: #a8432a;
+      --color-accent-2-700: #7e3019;
+      --color-divider: #2a2320;
+    }
+    a { color: var(--color-accent-700); text-decoration: none; }
+    a:hover { color: var(--color-accent); }
+    ::selection { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
+    body { overflow-x: hidden; }
+    @media (max-width: 768px) {
+      nav.nav { flex-wrap: wrap; gap: 10px 14px; }
+    }
+
+    .vd-main-slot { position: absolute; inset: 0; opacity: 0; transform: scale(1.015); transition: opacity .38s ease, transform .38s ease; }
+    .vd-main-slot.is-active { opacity: 1; transform: scale(1); }
+
+    .vd-arrow { transition: background .2s ease, transform .2s ease, border-color .2s ease; }
+    .vd-arrow:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; transform: translateY(-50%) scale(1.08); }
+    .vd-arrow:active { transform: translateY(-50%) scale(.96); }
+
+    .vd-thumb { position: relative; flex: none; cursor: pointer; border: 2px solid transparent; border-radius: 12px; overflow: hidden; transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease; opacity: 0; transform: translateY(14px); }
+    .vd-thumb:hover { transform: translateY(-2px); box-shadow: 0 12px 26px -14px rgba(20,16,14,.5); }
+    .vd-thumb.is-active { border-color: var(--color-accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 28%, transparent); }
+    .vd-thumb.is-in { opacity: 1; transform: translateY(0); }
+
+    .vd-viewer { opacity: 0; transform: scale(.985); transition: opacity .7s ease, transform .7s ease; }
+    .vd-viewer.is-in { opacity: 1; transform: scale(1); }
+
+    .vd-thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 14px; }
+    @media (max-width: 560px) {
+      .vd-thumbs { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .vd-main-slot, .vd-thumb, .vd-viewer { transition: none; opacity: 1; transform: none; }
+    }
+  </style>
+</helmet>
+
+<nav class="nav" style="position:sticky;top:0;z-index:50;background:var(--color-bg);display:flex;align-items:center;gap:24px;padding-block:14px;padding-inline:clamp(20px,5vw,72px);border-bottom:2px solid var(--color-divider)">
+  <a href="index.html" class="nav-brand" style="display:inline-flex;align-items:center;gap:12px;letter-spacing:-0.01em;color:var(--color-text);text-decoration:none;margin-right:auto;font-family:var(--font-heading);font-weight:900;font-size:18px">
+    <img src="assets/logo-new.webp" alt="VUJIĆ DEKOR 9 logo" style="height:40px;width:40px;object-fit:cover;border:2px solid var(--color-divider);display:block">
+    VUJIĆ DEKOR 9
+  </a>
+  <a href="index.html" style="white-space:nowrap;font-size:17px;font-weight:700;color:var(--color-text);text-decoration:none">← Nazad na sajt</a>
+  <a href="index.html#katalog-foto" style="white-space:nowrap;font-size:17px;font-weight:700;color:var(--color-text);text-decoration:none">Katalog</a>
+  <a href="index.html#ponuda" class="btn btn-primary" style="text-decoration:none;font-size:17px;font-weight:700;border-radius:999px;color:#fff;background:var(--color-accent);padding:12px 26px;display:inline-flex;align-items:center">Zatraži cenu</a>
+</nav>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+
+  <section style="padding:clamp(48px,7vw,96px) 0 clamp(28px,4vw,44px)">
+    <span class="kicker" style="display:block;font-size:15px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Galerija radova</span>
+    <h1 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(36px,5.6vw,76px);line-height:1.02;letter-spacing:-0.025em;margin:0 0 0 -0.03em">Naši radovi</h1>
+    <p style="font-size:clamp(16px,1.4vw,19px);line-height:1.65;max-width:56ch;margin:24px 0 0;color:color-mix(in srgb, var(--color-text) 82%, transparent)">
+      Izbor ugrađene dekorativne opeke — birajte strelicama ili sličicama ispod. Prevucite svoje fotografije u polja da ih zamenite.
+    </p>
+  </section>
+
+  <section style="padding:0 0 clamp(56px,8vw,104px)">
+    <div class="vd-viewer" ref="{{ setViewer }}">
+      <div style="position:relative;width:100%;aspect-ratio:16/10;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 70px -34px rgba(20,16,14,.55)">
+        <sc-for list="{{ items }}" as="it" hint-placeholder-count="8">
+          <div class="vd-main-slot" data-main="{{ it.i }}">
+            <image-slot id="{{ it.id }}" src="{{ it.src }}" shape="rect" fit="contain" placeholder="{{ it.label }}" style="width:100%;height:100%;display:block;background:#fff"></image-slot>
+          </div>
+        </sc-for>
+
+        <button class="vd-arrow" aria-label="Prethodna" onClick="{{ prev }}" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);z-index:3;width:52px;height:52px;border-radius:50%;border:2px solid var(--color-divider);background:rgba(255,255,255,.86);color:var(--color-text);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;backdrop-filter:blur(4px)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <button class="vd-arrow" aria-label="Sledeća" onClick="{{ next }}" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);z-index:3;width:52px;height:52px;border-radius:50%;border:2px solid var(--color-divider);background:rgba(255,255,255,.86);color:var(--color-text);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;backdrop-filter:blur(4px)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+        </button>
+
+        <div style="position:absolute;right:18px;bottom:16px;z-index:3;background:rgba(20,16,14,.68);color:#fff;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums;padding:6px 12px;border-radius:999px;backdrop-filter:blur(4px)">{{ counter }}</div>
+      </div>
+
+      <div class="vd-thumbs" ref="{{ setThumbs }}" style="margin-top:18px">
+        <sc-for list="{{ items }}" as="it" hint-placeholder-count="8">
+          <div class="vd-thumb" data-thumb="{{ it.i }}" onClick="{{ it.select }}" style="aspect-ratio:4/3">
+            <image-slot id="{{ it.id }}" src="{{ it.src }}" shape="rect" fit="cover" placeholder="{{ it.i1 }}" style="width:100%;height:100%;display:block"></image-slot>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<section style="background:var(--color-accent);color:var(--color-bg)">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,88px) clamp(20px,5vw,72px);display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;align-items:center">
+    <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(26px,3.4vw,44px);line-height:1.06;letter-spacing:-0.02em;margin:0;max-width:20ch">Sviđa vam se? Uradimo isto kod vas.</h2>
+    <a href="index.html#ponuda" class="btn" style="display:inline-flex;align-items:center;justify-content:center;background:var(--color-bg);color:var(--color-accent);border:2px solid var(--color-bg);text-decoration:none;padding:20px 40px;font-size:18px;font-family:var(--font-heading);font-weight:700;border-radius:999px">Zatraži ponudu</a>
+  </div>
+</section>
+
+<footer style="border-top:2px solid var(--color-divider)">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,48px) clamp(20px,5vw,72px);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline">
+    <span style="display:inline-flex;align-items:center;gap:12px;font-family:var(--font-heading);font-weight:900;letter-spacing:-0.01em;font-size:18px">
+      <img src="assets/logo-new.webp" alt="VUJIĆ DEKOR 9 logo" style="height:40px;width:40px;object-fit:cover;border:2px solid var(--color-divider);display:block">
+      VUJIĆ DEKOR 9
+    </span>
+    <span style="font-size:13px;color:color-mix(in srgb, var(--color-text) 60%, transparent)">Dekorativna opeka · Proizvodnja i ugradnja · Mionica</span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  // EDIT HERE: gallery image ids (each maps to one drop-target you fill in the editor)
+  IMAGES = Array.from({ length: 66 }, (_, i) => "gal-" + (i + 1));
+  state = { active: 0 };
+
+  setViewer = (el) => { this.viewer = el; };
+  setThumbs = (el) => { this.thumbs = el; };
+
+  componentDidMount() {
+    this._apply();
+    // load-in animation
+    requestAnimationFrame(() => {
+      if (this.viewer) this.viewer.classList.add("is-in");
+      const thumbs = this.thumbs ? this.thumbs.querySelectorAll(".vd-thumb") : [];
+      thumbs.forEach((t, i) => setTimeout(() => t.classList.add("is-in"), 220 + i * 70));
+    });
+    this._onKey = (e) => {
+      if (e.key === "ArrowLeft") this.prev();
+      else if (e.key === "ArrowRight") this.next();
+    };
+    window.addEventListener("keydown", this._onKey);
+  }
+  componentWillUnmount() { window.removeEventListener("keydown", this._onKey); }
+
+  _apply() {
+    const root = document.getElementById("dc-root") || document;
+    const a = this.state.active;
+    root.querySelectorAll("[data-main]").forEach((el) => {
+      el.classList.toggle("is-active", Number(el.getAttribute("data-main")) === a);
+    });
+    root.querySelectorAll("[data-thumb]").forEach((el) => {
+      const on = Number(el.getAttribute("data-thumb")) === a;
+      el.classList.toggle("is-active", on);
+      if (on && el.scrollIntoView && this.thumbs && this.thumbs.scrollWidth > this.thumbs.clientWidth) {
+        // keep active thumb in view on mobile scroller without moving the page
+        const t = el.getBoundingClientRect(), c = this.thumbs.getBoundingClientRect();
+        this.thumbs.scrollLeft += (t.left + t.width / 2) - (c.left + c.width / 2);
+      }
+    });
+  }
+  select = (i) => { this.setState({ active: i }, () => this._apply()); };
+  prev = () => { const n = this.IMAGES.length; this.select((this.state.active - 1 + n) % n); };
+  next = () => { const n = this.IMAGES.length; this.select((this.state.active + 1) % n); };
+
+  renderVals() {
+    const prefill = { "gal-1": "assets/gal-1.webp", "gal-2": "assets/gal-2.webp", "gal-3": "assets/gal-3.webp", "gal-4": "assets/gal-4.webp", "gal-5": "assets/gal-5.webp", "gal-6": "assets/gal-6.webp", "gal-7": "assets/gal-7.webp", "gal-8": "assets/gal-8.webp", "gal-9": "assets/gal-9.webp", "gal-10": "assets/gal-10.webp", "gal-11": "assets/gal-11.webp", "gal-12": "assets/gal-12.webp", "gal-13": "assets/gal-13.webp", "gal-14": "assets/gal-14.webp", "gal-15": "assets/gal-15.webp", "gal-16": "assets/gal-16.webp", "gal-17": "assets/gal-17.webp", "gal-18": "assets/gal-18.webp", "gal-19": "assets/gal-19.webp", "gal-20": "assets/gal-20.webp", "gal-21": "assets/gal-21.webp", "gal-22": "assets/gal-22.webp", "gal-23": "assets/gal-23.webp", "gal-24": "assets/gal-24.webp", "gal-25": "assets/gal-25.webp", "gal-26": "assets/gal-26.webp", "gal-27": "assets/gal-27.jpg", "gal-28": "assets/gal-28.jpg", "gal-29": "assets/gal-29.jpg", "gal-30": "assets/gal-30.jpg", "gal-31": "assets/gal-31.jpg", "gal-32": "assets/gal-32.jpg", "gal-33": "assets/gal-33.jpg", "gal-34": "assets/gal-34.jpg", "gal-35": "assets/gal-35.jpg", "gal-36": "assets/gal-36.jpg", "gal-37": "assets/gal-37.jpg", "gal-38": "assets/gal-38.jpg", "gal-39": "assets/gal-39.jpg", "gal-40": "assets/gal-40.jpg", "gal-41": "assets/gal-41.jpg", "gal-42": "assets/gal-42.jpg", "gal-43": "assets/gal-43.jpg", "gal-44": "assets/gal-44.jpg", "gal-45": "assets/gal-45.jpg", "gal-46": "assets/gal-46.jpg", "gal-47": "assets/gal-47.jpg", "gal-48": "assets/gal-48.jpg", "gal-49": "assets/gal-49.jpg", "gal-50": "assets/gal-50.jpg", "gal-51": "assets/gal-51.jpg", "gal-52": "assets/gal-52.jpg", "gal-53": "assets/gal-53.jpg", "gal-54": "assets/gal-54.jpg", "gal-55": "assets/gal-55.jpg", "gal-56": "assets/gal-56.jpg", "gal-57": "assets/gal-57.jpg", "gal-58": "assets/gal-58.jpg", "gal-59": "assets/gal-59.jpg", "gal-60": "assets/gal-60.jpg", "gal-61": "assets/gal-61.jpg", "gal-62": "assets/gal-62.jpg", "gal-63": "assets/gal-63.jpg", "gal-64": "assets/gal-64.jpg", "gal-65": "assets/gal-65.jpg", "gal-66": "assets/gal-66.jpg" };
+    const items = this.IMAGES.map((id, i) => ({
+      id, i, i1: String(i + 1),
+      label: "Rad " + (i + 1),
+      src: prefill[id] || "",
+      select: () => this.select(i)
+    }));
+    return {
+      items,
+      counter: (this.state.active + 1) + " / " + this.IMAGES.length,
+      prev: this.prev,
+      next: this.next,
+      setViewer: this.setViewer,
+      setThumbs: this.setThumbs
+    };
+  }
+}
+</script>
+</body>
+</html>

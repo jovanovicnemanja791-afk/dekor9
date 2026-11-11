@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="_ds/modernist-dd949104-70d6-41c0-bfdd-7dabdc8d386d/styles.css">
+  <script src="_ds/modernist-dd949104-70d6-41c0-bfdd-7dabdc8d386d/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    /* Paleta iz logotipa — topli tonovi cigle preko crvenog akcenta sistema */
+    :root {
+      --color-bg: #f4f1ec;
+      --color-accent: #a8432a;
+      --color-accent-500: #a8432a;
+      --color-accent-600: #94381f;
+      --color-accent-700: #7e3019;
+      --color-accent-2-500: #a8432a;
+      --color-accent-2-700: #7e3019;
+      --color-text: #2b2420;
+      --color-divider: #2b2420;
+    }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    *, *::before, *::after { box-sizing: border-box; }
+    img, video { max-width: 100%; }
+    body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); text-wrap: pretty; max-width: 100%; overflow-x: hidden; }
+    h1, h2, h3, p, span, a { overflow-wrap: anywhere; word-break: normal; }
+    a { color: var(--color-accent-700); text-decoration: none; }
+    a:hover { color: var(--color-accent); }
+    .vd-navtoggle { display: none; }
+    .vd-navlinks { display: contents; }
+    @media (max-width: 768px) {
+      .vd-rest { background-attachment: scroll !important; }
+      .vd-hero { background-image: linear-gradient(180deg, rgba(18,14,12,.28) 0%, rgba(18,14,12,.20) 42%, rgba(18,14,12,.62) 100%), url(assets/hero-house.jpg) !important; background-position: center 32% !important; background-size: cover !important; }
+      .vd-hero .vd-heroanim { padding-top: clamp(120px, 30vw, 180px) !important; padding-bottom: clamp(56px, 14vw, 96px) !important; }
+      .vd-hero h1 { font-size: clamp(30px, 8.5vw, 44px) !important; }
+      nav.nav { position: fixed; left: 0; right: 0; margin-left: 12px !important; margin-right: 12px !important; padding-left: 16px !important; padding-right: 16px !important; gap: 10px; justify-content: center; }
+      .nav-brand { margin: 0 auto !important; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 15px; max-width: calc(100% - 60px); }
+      .vd-navtoggle { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; flex: none; padding: 0; background: transparent; border: 2px solid var(--color-divider); border-radius: 10px; cursor: pointer; }
+      .nav-brand img { height: 34px !important; }
+      .vd-burger, .vd-burger::before, .vd-burger::after { display: block; width: 22px; height: 2px; background: var(--color-text); transition: transform .25s ease, opacity .25s ease; }
+      .vd-burger { position: relative; }
+      .vd-burger::before, .vd-burger::after { content: ""; position: absolute; left: 0; }
+      .vd-burger::before { top: -7px; }
+      .vd-burger::after { top: 7px; }
+      .vd-burger[data-open="true"] { background: transparent; }
+      .vd-burger[data-open="true"]::before { transform: translateY(7px) rotate(45deg); }
+      .vd-burger[data-open="true"]::after { transform: translateY(-7px) rotate(-45deg); }
+      .vd-navlinks { display: flex; position: absolute; top: calc(100% + 10px); left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 4px; background: var(--color-bg); border: 2px solid var(--color-divider); border-radius: 22px; box-shadow: 0 26px 50px -18px rgba(20,16,14,.5); padding: 12px 16px 16px; transform: translateY(-10px) scale(.98); transform-origin: top center; opacity: 0; visibility: hidden; max-height: 0; overflow: hidden; transition: opacity .34s ease, transform .42s cubic-bezier(.2,.7,.2,1), max-height .42s cubic-bezier(.2,.7,.2,1), visibility 0s linear .42s; }
+      .vd-navlinks.is-open { transform: translateY(0) scale(1); opacity: 1; visibility: visible; max-height: 80vh; transition: opacity .34s ease, transform .42s cubic-bezier(.2,.7,.2,1), max-height .42s cubic-bezier(.2,.7,.2,1), visibility 0s; }
+      .vd-navlinks > a { padding: 14px 4px; opacity: 0; transform: translateY(-6px); transition: opacity .32s ease, transform .32s ease; }
+      .vd-navlinks.is-open > a { opacity: 1; transform: translateY(0); }
+      .vd-navlinks.is-open > a:nth-child(1) { transition-delay: .10s; }
+      .vd-navlinks.is-open > a:nth-child(2) { transition-delay: .16s; }
+      .vd-navlinks.is-open > a:nth-child(3) { transition-delay: .22s; }
+      .vd-navlinks.is-open > a:nth-child(4) { transition-delay: .28s; }
+      .vd-navlinks.is-open > a:nth-child(5) { transition-delay: .34s; }
+      .vd-navlinks.is-open > a:nth-child(6) { transition-delay: .40s; }
+      .vd-navlinks > a { border-radius: 12px; }
+      .vd-navlinks > a:not(.btn):hover { background: color-mix(in srgb, var(--color-accent) 8%, transparent); }
+      .vd-navlinks > a.btn { margin-top: 8px; justify-content: center; }
+      .vd-navtoggle:hover { border-color: var(--color-accent); }
+      .vd-grid3, .vd-grid2, .vd-form2 { grid-template-columns: 1fr !important; }
+      .vd-proces-row { grid-template-columns: 1fr !important; gap: 6px 0 !important; }
+      .vd-proces-line { display: none !important; }
+      #zasto { padding-left: 16px !important; padding-right: 16px !important; }
+      .vd-nodes { grid-template-columns: 1fr !important; gap: 12px; }
+      .vd-ba { aspect-ratio: 4/3 !important; }
+      .vd-ba-grid { grid-template-columns: 1fr !important; }
+      #onama { min-height: 78vh !important; background-position: 68% center !important; align-items: flex-end !important; }
+      #onama::before { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(20,15,12,.15) 0%, rgba(20,15,12,.35) 55%, rgba(20,15,12,.72) 100%); pointer-events: none; }
+      #onama > div { position: relative; z-index: 1; }
+    }
+    @media (max-width: 430px) {
+      .vd-hero h1 { font-size: clamp(26px, 8vw, 36px) !important; }
+      .vd-herobtn { padding: 16px 26px !important; font-size: 16px !important; }
+      .vd-track image-slot { width: clamp(200px, 62vw, 260px) !important; }
+      #proces h2, #zasto h2 { font-size: clamp(24px, 7vw, 34px) !important; }
+      .vd-ba + * , #proces p, #zasto h2 { max-width: 100% !important; }
+      .vd-hero .kicker, .kicker { word-break: break-word; }
+    }
+    ::selection { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
+    .vd-faq > summary { list-style: none; cursor: pointer; }
+    .vd-faq > summary::-webkit-details-marker { display: none; }
+    .vd-faq[open] .vd-plus { transform: rotate(45deg); }
+    .vd-nodes {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      justify-items: stretch;
+      align-items: stretch;
+      gap: 16px;
+      max-width: 100%;
+      margin: 0;
+    }
+    .vd-node {
+      width: 100%;
+      max-width: none;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, background .4s ease, border-color .4s ease, opacity .5s ease;
+    }
+    .vd-node.is-in { opacity: 1; transform: none; }
+    .vd-node:hover {
+      transform: scale(1.06);
+      background: rgba(255,255,255,.16);
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 1px var(--color-accent), 0 26px 60px -18px color-mix(in srgb, var(--color-accent) 55%, transparent), 0 0 40px -4px color-mix(in srgb, var(--color-accent) 45%, transparent);
+    }
+    .vd-node:hover .vd-node-title,
+    .vd-node:hover .vd-node-idx,
+    .vd-node:hover p { color: var(--color-accent); text-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 55%, transparent); }
+    .vd-node:hover .vd-node-idx svg { stroke: var(--color-accent); filter: drop-shadow(0 0 10px color-mix(in srgb, var(--color-accent) 60%, transparent)); }
+    @media (prefers-reduced-motion: reduce) {
+      .vd-node { opacity: 1; transform: none; transition: none; }
+    }
+    .vd-node.is-active {
+      opacity: 1;
+      transform: scale(1.1);
+      border-color: var(--color-accent);
+      box-shadow: 0 22px 55px -22px rgba(168,67,42,.55);
+    }
+    .vd-node.is-active .vd-node-title { color: var(--color-accent); }
+    .vd-node.is-active .vd-node-idx { color: var(--color-accent); }
+    .vd-node-title, .vd-node-idx { transition: color .55s ease; }
+    .vd-prod { opacity: 0; transform: translateY(24px); transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, border-color .4s ease, opacity .5s ease; }
+    .vd-prod.is-in { opacity: 1; transform: none; }
+    .vd-prod.is-in:hover {
+      transform: scale(1.06);
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 1px var(--color-accent), 0 26px 60px -18px color-mix(in srgb, var(--color-accent) 55%, transparent), 0 0 40px -4px color-mix(in srgb, var(--color-accent) 45%, transparent);
+    }
+    .vd-prod:hover .vd-prod-title,
+    .vd-prod:hover p { color: var(--color-accent); text-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 55%, transparent); }
+    @media (prefers-reduced-motion: reduce) { .vd-prod { transition: none; opacity: 1; transform: none; } .vd-prod:hover { transform: none; } }
+    .vd-tri3 { transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, border-color .4s ease; }
+    .vd-tri3:hover {
+      transform: scale(1.06);
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 1px var(--color-accent), 0 26px 60px -18px color-mix(in srgb, var(--color-accent) 55%, transparent), 0 0 40px -4px color-mix(in srgb, var(--color-accent) 45%, transparent);
+    }
+    .vd-tri3:hover .vd-tri3-title,
+    .vd-tri3:hover p { color: var(--color-accent); text-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 55%, transparent); }
+    @media (prefers-reduced-motion: reduce) { .vd-tri3 { transition: none; } .vd-tri3:hover { transform: none; } }
+    @media (max-width: 720px) {
+      .vd-nodes { grid-template-columns: 1fr; }
+      .vd-node { max-width: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .vd-node { opacity: 1; transition: none; }
+    }
+    .vd-slidewin {
+      -webkit-mask-image: radial-gradient(115% 115% at 50% 50%, #000 62%, rgba(0,0,0,.35) 82%, transparent 100%);
+      mask-image: radial-gradient(115% 115% at 50% 50%, #000 62%, rgba(0,0,0,.35) 82%, transparent 100%);
+    }
+    .vd-slidewin img { border-radius: 22px; }
+    .vd-hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: clamp(150px, 22vw, 250px);
+      z-index: 0;
+      pointer-events: none;
+      background: linear-gradient(to bottom,
+        rgba(244,241,236,0) 0%,
+        rgba(244,241,236,.35) 45%,
+        rgba(244,241,236,.82) 80%,
+        var(--color-bg) 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 55%);
+    }
+    .vd-reveal { opacity: 0; filter: blur(8px); transform: translateY(20px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), filter .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+    .vd-reveal.is-in { opacity: 1; filter: blur(0); transform: none; }
+    @media (prefers-reduced-motion: reduce) { .vd-reveal { opacity: 1; filter: none; transform: none; transition: none; } }
+    .vd-svc-link { position: relative; align-self: center; width: clamp(36px, 6vw, 110px); height: 2px; overflow: visible; color: color-mix(in srgb, var(--color-accent) 62%, var(--color-divider)); background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--color-accent) 26%, transparent) 45%, transparent); }
+    .vd-svc-chevron { position: absolute; right: -6px; top: 50%; transform: translateY(-50%); opacity: .7; }
+    .vd-svc-particle { position: absolute; top: 50%; left: 0; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; opacity: 0; background: color-mix(in srgb, var(--color-accent) 88%, #000); box-shadow: 0 0 6px 1px color-mix(in srgb, var(--color-accent) 55%, transparent), -8px 0 8px -2px color-mix(in srgb, var(--color-accent) 32%, transparent), -16px 0 10px -4px color-mix(in srgb, var(--color-accent) 18%, transparent); }
+    .vd-svc-grid.is-run .vd-svc-particle { animation: vd-particle 3.2s cubic-bezier(.5,0,.5,1) .3s infinite; }
+    @keyframes vd-particle {
+      0% { left: 0; opacity: 0; }
+      14% { opacity: 1; }
+      88% { left: 100%; opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
+    /* persistent ambient glow behind card 01 */
+    .vd-svc-glow-static::before { content: ""; position: absolute; inset: -14% -10%; z-index: -1; border-radius: 24px; background: radial-gradient(60% 60% at 50% 50%, rgba(126,48,25,.42), rgba(126,48,25,0) 70%); opacity: 1; }
+    /* glow behind card 02 fades in once the particle arrives */
+    .vd-svc-glow::before { content: ""; position: absolute; inset: -14% -10%; z-index: -1; border-radius: 24px; background: radial-gradient(60% 60% at 50% 50%, rgba(126,48,25,.42), rgba(126,48,25,0) 70%); opacity: 0; transform: scale(.92); }
+    .vd-svc-grid.is-run .vd-svc-glow::before { animation: vd-glow-in 1.1s ease-out 2.9s forwards; }
+    @keyframes vd-glow-in {
+      0% { opacity: 0; transform: scale(.92); }
+      55% { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @media (max-width: 720px) {
+      .vd-svc-grid { grid-template-columns: 1fr !important; justify-items: stretch; }
+      .vd-svc-link { width: 2px; height: clamp(40px, 12vw, 64px); background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--color-accent) 26%, transparent) 45%, transparent); justify-self: center; }
+      .vd-svc-chevron { right: 50%; top: auto; bottom: -6px; transform: translateX(50%) rotate(90deg); }
+      .vd-svc-particle { left: 50%; top: 0; margin: -3.5px 0 0 -3.5px; }
+      .vd-svc-grid.is-run .vd-svc-particle { animation: vd-particle-v 3.2s cubic-bezier(.5,0,.5,1) .3s infinite; }
+    }
+    @keyframes vd-particle-v {
+      0% { top: 0; opacity: 0; }
+      14% { opacity: 1; }
+      88% { top: 100%; opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .vd-svc-particle, .vd-svc-glow::before { animation: none; }
+      .vd-svc-particle { display: none; }
+    }
+    .vd-svc-reveal { opacity: 0; transform: translateY(30px); transition: opacity .82s cubic-bezier(.2,.7,.2,1), transform .82s cubic-bezier(.2,.7,.2,1); }
+    .vd-svc-reveal.is-in { opacity: 1; transform: none; }
+    .vd-svc { position: relative; overflow: hidden; will-change: transform; transition: transform .45s cubic-bezier(.2,.7,.2,1), box-shadow .45s ease, border-color .45s ease; }
+    .vd-svc:hover { transform: translateY(-5px) scale(1.01); border-color: color-mix(in srgb, var(--color-accent) 55%, var(--color-divider)); box-shadow: 0 20px 46px -26px rgba(20,16,14,.4); }
+    .vd-svc-num { transition: transform .45s cubic-bezier(.2,.7,.2,1), color .45s ease; }
+    .vd-svc:hover .vd-svc-num { transform: translateY(-3px); color: var(--color-accent-700); }
+    .vd-svc::after { content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%; pointer-events: none; background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.35) 50%, transparent 100%); transform: skewX(-16deg); opacity: 0; transition: opacity .3s ease; }
+    .vd-svc:hover::after { opacity: 1; animation: vd-sheen 1.5s cubic-bezier(.3,.4,.3,1) forwards; }
+    @keyframes vd-sheen { from { left: -60%; } to { left: 130%; } }
+    @media (prefers-reduced-motion: reduce) {
+      .vd-svc-reveal { opacity: 1; transform: none; transition: none; }
+      .vd-svc, .vd-svc-num { transition: none; }
+      .vd-svc:hover { transform: none; }
+      .vd-svc::after { display: none; }
+    }
+    @keyframes vd-pulse { 0%,100% { opacity: .4; transform: scale(.96); } 50% { opacity: 1; transform: scale(1); } }
+    /* usluge cards: match product-card animation in section above */
+    .vd-svc-reveal { opacity: 0 !important; transform: translateY(24px) !important; transition: opacity .5s ease, transform .4s cubic-bezier(.2,.7,.2,1) !important; }
+    .vd-svc-reveal.is-in { opacity: 1 !important; transform: none !important; }
+    .vd-svc { transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, border-color .4s ease !important; }
+    .vd-svc:hover { transform: scale(1.06) !important; border-color: var(--color-accent) !important; box-shadow: 0 0 0 1px var(--color-accent), 0 26px 60px -18px color-mix(in srgb, var(--color-accent) 55%, transparent), 0 0 40px -4px color-mix(in srgb, var(--color-accent) 45%, transparent) !important; }
+    .vd-svc:hover h3, .vd-svc:hover p, .vd-svc:hover .vd-svc-num { color: var(--color-accent) !important; text-shadow: 0 0 18px color-mix(in srgb, var(--color-accent) 55%, transparent); }
+    .vd-svc-num { transition: none !important; }
+    .vd-svc::after { display: none !important; }
+    .vd-svc-particle { display: none !important; }
+    .vd-svc-glow::before, .vd-svc-glow-static::before { display: none !important; }
+    @media (prefers-reduced-motion: reduce) { .vd-svc-reveal { opacity: 1 !important; transform: none !important; } .vd-svc, .vd-svc:hover { transition: none !important; transform: none !important; } }
+    .vd-pulse { animation: vd-pulse 1s ease-in-out infinite; }
+    .vd-c-rv { opacity: 0; transform: translateY(22px); transition: opacity .75s cubic-bezier(.2,.7,.2,1), transform .75s cubic-bezier(.2,.7,.2,1); }
+    #ponuda.is-in .vd-c-rv { opacity: 1; transform: none; }
+    .vd-cinfo { transition: transform .3s cubic-bezier(.2,.7,.2,1), background .3s ease, border-color .3s ease; }
+    .vd-cinfo:hover { transform: translateX(6px); background: rgba(255,255,255,.2) !important; border-color: rgba(255,255,255,.55) !important; }
+    .vd-navlinks > a.btn-primary { position: relative; overflow: hidden; animation: vdBtnGlow 2.6s ease-in-out infinite; }
+    .vd-navlinks > a.btn-primary::after { content: ""; position: absolute; top: 0; left: -80%; width: 50%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); transform: skewX(-20deg); animation: vdBtnShine 3.2s ease-in-out infinite; pointer-events: none; }
+    @keyframes vdBtnGlow { 0%,100% { box-shadow: 0 0 10px 0 color-mix(in srgb, var(--color-accent) 45%, transparent), 0 0 0 0 color-mix(in srgb, var(--color-accent) 40%, transparent); } 50% { box-shadow: 0 0 26px 4px color-mix(in srgb, var(--color-accent) 80%, transparent), 0 0 0 6px color-mix(in srgb, var(--color-accent) 0%, transparent); } }
+    @keyframes vdBtnShine { 0%,55% { left: -80%; } 100% { left: 160%; } }
+    @media (prefers-reduced-motion: reduce) { .vd-navlinks > a.btn-primary, .vd-navlinks > a.btn-primary::after { animation: none; } }
+    .vd-glow { position: relative; display: flex; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 16px; background: rgba(32,30,29,.05); border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent); box-shadow: 0 0 18px -2px color-mix(in srgb, var(--color-accent) 45%, transparent), inset 0 0 14px -6px color-mix(in srgb, var(--color-accent) 40%, transparent); animation: vdGlow 3.2s ease-in-out infinite; transition: transform .3s ease; }
+    .vd-glow:nth-child(2) { animation-delay: -1s; } .vd-glow:nth-child(3) { animation-delay: -2s; }
+    .vd-glow:hover { transform: translateX(6px); }
+    .vd-glow-ic { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: var(--color-accent); color: #fff; box-shadow: 0 0 16px color-mix(in srgb, var(--color-accent) 70%, transparent); }
+    @keyframes vdGlow { 0%,100% { box-shadow: 0 0 12px -2px color-mix(in srgb, var(--color-accent) 35%, transparent), inset 0 0 10px -6px color-mix(in srgb, var(--color-accent) 30%, transparent); } 50% { box-shadow: 0 0 28px 0 color-mix(in srgb, var(--color-accent) 65%, transparent), inset 0 0 18px -4px color-mix(in srgb, var(--color-accent) 50%, transparent); } }
+    @media (prefers-reduced-motion: reduce) { .vd-glow { animation: none; } }
+    .vd-ccard { transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease; }
+    @media (hover: hover) { .vd-ccard:hover { transform: translateY(-4px); box-shadow: 0 2px 4px rgba(60,12,4,.12), 0 34px 70px -22px rgba(60,12,4,.6) !important; } }
+    .vd-cinput { transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; }
+    .vd-cinput:hover { border-color: #c9bcab !important; }
+    .vd-cinput:focus { outline: none; border-color: var(--color-accent) !important; box-shadow: 0 0 0 4px rgba(236,48,19,.16); background: #fff !important; }
+    .vd-csend { transition: transform .25s ease, background .25s ease, box-shadow .25s ease; }
+    .vd-csend:hover { background: var(--color-accent-700) !important; transform: translateY(-2px); box-shadow: 0 12px 26px -10px rgba(120,24,8,.7); }
+    @media (prefers-reduced-motion: reduce) { .vd-c-rv { opacity: 1; transform: none; transition: none; } .vd-cinfo, .vd-ccard, .vd-csend { transition: none; } }
+    .vd-stat { display: inline-block; transition: transform .3s cubic-bezier(.2,.7,.2,1); transform-origin: left center; }
+    @media (hover: hover) { .vd-stat:hover { transform: scale(1.08); } }
+    @media (prefers-reduced-motion: reduce) { .vd-stat { transition: none; } }
+    @media (prefers-reduced-motion: reduce) { .vd-pulse { animation: none; opacity: 1; } }
+    @media (max-width: 720px) {
+    }
+    @media (prefers-reduced-motion: reduce) {
+    }
+    nav.nav { transition: transform .35s cubic-bezier(.2,.7,.2,1); will-change: transform; isolation: isolate; }
+    nav.nav::before { content: ""; position: absolute; inset: 0; border-radius: inherit; overflow: hidden; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(120px 80px at 20% 12%, rgba(255,255,255,.85), rgba(255,255,255,0) 70%),
+        radial-gradient(160px 120px at 78% 120%, color-mix(in srgb, var(--color-accent) 40%, transparent), rgba(255,255,255,0) 72%),
+        radial-gradient(90px 70px at 55% 40%, rgba(255,255,255,.5), rgba(255,255,255,0) 75%);
+      background-size: 200% 200%, 220% 220%, 180% 180%;
+      background-repeat: no-repeat;
+      animation: vd-liquidglass 9s ease-in-out infinite alternate; }
+    @keyframes vd-liquidglass {
+      0%   { background-position: 0% 0%, 100% 100%, 30% 40%; }
+      50%  { background-position: 40% 30%, 60% 70%, 70% 55%; }
+      100% { background-position: 100% 20%, 20% 90%, 40% 60%; }
+    }
+    @media (prefers-reduced-motion: reduce) { nav.nav::before { animation: none; } }
+    .vd-navlink { position: relative; overflow: hidden; padding: 8px 16px; border-radius: 999px; border: 1px solid transparent; transition: background .3s ease, border-color .3s ease, box-shadow .3s ease, backdrop-filter .3s ease, color .3s ease; }
+    .vd-navlink::after, .vd-navcta::after { content: ""; position: absolute; top: 0; left: 0; width: 55%; height: 100%; pointer-events: none; background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.55) 50%, transparent 100%); transform: translateX(-180%) skewX(-18deg); }
+    .vd-navcta { position: relative; overflow: hidden; }
+    @media (hover: hover) {
+      .vd-navlink:hover { background: color-mix(in srgb, #fff 55%, transparent); border-color: color-mix(in srgb, var(--color-text) 12%, transparent); box-shadow: 0 4px 18px -8px rgba(20,16,14,.35), inset 0 1px 0 rgba(255,255,255,.6); -webkit-backdrop-filter: blur(10px) saturate(1.4); backdrop-filter: blur(10px) saturate(1.4); }
+      .vd-navcta { transition: filter .3s ease, box-shadow .3s ease, transform .3s ease; }
+      .vd-navcta:hover { filter: brightness(1.06); transform: translateY(-1px); box-shadow: 0 10px 26px -10px color-mix(in srgb, var(--color-accent) 70%, transparent), inset 0 1px 0 rgba(255,255,255,.3); }
+      .vd-navlink:hover::after, .vd-navcta:hover::after { animation: vd-liquid .9s cubic-bezier(.4,.1,.2,1) forwards; }
+    }
+    @keyframes vd-liquid { from { transform: translateX(-180%) skewX(-18deg); } to { transform: translateX(320%) skewX(-18deg); } }
+    .vd-herobtn { transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, filter .3s ease; }
+    .vd-herobtn::after { content: ""; position: absolute; top: 0; left: 0; width: 55%; height: 100%; pointer-events: none; background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.5) 50%, transparent 100%); transform: translateX(-180%) skewX(-18deg); }
+    @media (hover: hover) {
+      .vd-herobtn:hover { transform: scale(1.05); box-shadow: 0 14px 34px -12px rgba(20,16,14,.4), inset 0 1px 0 rgba(255,255,255,.4); -webkit-backdrop-filter: blur(8px) saturate(1.3); backdrop-filter: blur(8px) saturate(1.3); filter: brightness(1.04); }
+      .vd-herobtn:hover::after { animation: vd-liquid .9s cubic-bezier(.4,.1,.2,1) forwards; }
+    }
+    @media (prefers-reduced-motion: reduce) { .vd-herobtn { transition: none; } .vd-herobtn::after { display: none; } }
+    @media (prefers-reduced-motion: reduce) { .vd-navlink, .vd-navcta { transition: none; } }
+    nav.nav.vd-nav-hidden { transform: translateY(-105%); }
+    @media (prefers-reduced-motion: reduce) {
+      nav.nav { transition: none; }
+      nav.nav.vd-nav-hidden { transform: none; }
+    }
+    @keyframes vd-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .vd-form2 .input::placeholder { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+    @media (hover: hover) { .vd-social:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); transform: translateY(-2px); } }
+    @keyframes vd-thx-in { 0% { opacity: 0; transform: translateY(22px) scale(.98); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes vd-thx-ring { 0% { transform: scale(.4); opacity: 0; } 60% { opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+    @keyframes vd-thx-check { to { stroke-dashoffset: 0; } }
+    @keyframes vd-thx-pop { 0%,100% { transform: scale(1); } 40% { transform: scale(1.12); } }
+    @keyframes vd-thx-rise { 0% { opacity: 0; transform: translateY(14px); } 100% { opacity: 1; transform: translateY(0); } }
+    .vd-thx { animation: vd-thx-in .55s cubic-bezier(.2,.7,.2,1) both; }
+    .vd-thx-badge { animation: vd-thx-ring .5s cubic-bezier(.2,.9,.3,1) .1s both, vd-thx-pop .5s ease .55s both; }
+    .vd-thx-check { stroke-dasharray: 34; stroke-dashoffset: 34; animation: vd-thx-check .45s cubic-bezier(.6,0,.3,1) .5s forwards; }
+    .vd-thx-t1 { animation: vd-thx-rise .5s ease .5s both; }
+    .vd-thx-t2 { animation: vd-thx-rise .5s ease .68s both; }
+    @media (prefers-reduced-motion: reduce) {
+      .vd-thx, .vd-thx-badge, .vd-thx-t1, .vd-thx-t2 { animation: none; }
+      .vd-thx-check { stroke-dashoffset: 0; animation: none; }
+    }
+    .vd-track { animation: vd-scroll 36s linear infinite; }
+    .vd-marquee:hover .vd-track { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) { .vd-track { animation: none; } }
+    @keyframes vd-heroin { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .vd-heroanim > * { opacity: 0; }
+    .vd-heroanim.vd-hero-go > * { animation: vd-heroin .8s cubic-bezier(.2,.7,.2,1) forwards; }
+    .vd-heroanim.vd-hero-go > *:nth-child(1) { animation-delay: 1s; }
+    .vd-heroanim.vd-hero-go > *:nth-child(2) { animation-delay: 1.15s; }
+    .vd-heroanim.vd-hero-go > *:nth-child(3) { animation-delay: 1.3s; }
+    .vd-heroanim.vd-hero-go > *:nth-child(4) { animation-delay: 1.45s; }
+    @media (prefers-reduced-motion: reduce) { .vd-heroanim.vd-hero-go > * { opacity: 1; animation: none; } }
+    @media (max-width: 900px) { .vd-kat-grid { grid-template-columns: repeat(3, minmax(0,1fr)) !important; } }
+    @media (max-width: 560px) { .vd-kat-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; } }
+    .vd-kat-rv { opacity: 0; transform: translateY(44px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+    .vd-kat-rv.is-in { opacity: 1; transform: none; }
+    .vd-kat-grid image-slot { transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s ease; transform-origin: center center; touch-action: pan-y; }
+    .vd-kat-grid image-slot::part(image) { transition: transform .5s cubic-bezier(.2,.7,.2,1); transform-origin: center center; }
+    image-slot::part(image) { touch-action: pan-y; }
+    @media (hover: hover) {
+      .vd-kat-grid image-slot:hover { transform: scale(1.09); z-index: 5; position: relative; box-shadow: 0 22px 44px -18px rgba(20,16,14,.5); }
+      .vd-kat-grid image-slot:hover::part(image) { transform: translate(-50%, -50%) scale(1.14); }
+    }
+    @media (prefers-reduced-motion: reduce) { .vd-kat-grid image-slot, .vd-kat-grid image-slot::part(image) { transition: none; } .vd-kat-grid image-slot:hover { transform: none; box-shadow: none; } .vd-kat-grid image-slot:hover::part(image) { transform: translate(-50%, -50%); } }
+  </style>
+</helmet>
+
+<div class="vd-preload" style="position:fixed;inset:0;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:28px;padding:20px;box-sizing:border-box;background:#ffffff;opacity:{{ loadOpacity }};visibility:{{ loadVis }};transition:opacity .6s ease,visibility .6s ease">
+  <img src="assets/logo-full.png" alt="VUJIĆ DEKOR 9 — dekorativna opeka" class="vd-pulse" style="width:240px;max-width:66vw;height:auto;display:block;margin:0 auto">
+  <div style="width:200px;max-width:60vw;height:4px;background:color-mix(in srgb, var(--color-text) 14%, transparent);border-radius:999px;overflow:hidden">
+    <div style="height:100%;width:{{ loadPct }};background:var(--color-accent);border-radius:999px;transition:width .12s linear"></div>
+  </div>
+</div>
+
+<nav class="nav" style="position:fixed;top:14px;left:0;right:0;z-index:50;max-width:1200px;margin:0 auto;background:linear-gradient(135deg, color-mix(in srgb, var(--color-bg) 60%, transparent), color-mix(in srgb, var(--color-bg) 42%, transparent));-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);display:flex;align-items:center;gap:24px;padding-block:12px;padding-inline:clamp(20px,3vw,32px);border:1px solid color-mix(in srgb, #fff 55%, transparent);border-radius:999px;box-shadow:0 12px 34px -14px rgba(20,16,14,.34), inset 0 1px 0 rgba(255,255,255,.7), inset 0 -1px 2px rgba(255,255,255,.25)">
+  <a href="index.html" class="nav-brand" style="display:inline-flex;align-items:center;gap:12px;letter-spacing:-0.01em;color:var(--color-text);text-decoration:none;margin-right:auto;font-family:var(--font-heading);font-weight:900;font-size:18px">
+    <img src="assets/logo-full.png" alt="VUJIĆ DEKOR 9 logo" style="height:52px;width:auto;object-fit:contain;display:block">
+    VUJIĆ DEKOR 9
+  </a>
+  <button class="vd-navtoggle" aria-label="Meni" aria-expanded="{{ menuOpen }}" onClick="{{ toggleMenu }}">
+    <span class="vd-burger" data-open="{{ menuOpen }}"></span>
+  </button>
+  <div class="vd-navlinks {{ menuClass }}">
+    <a href="#katalog-foto" onClick="{{ closeMenu }}" class="vd-navlink" style="white-space:nowrap;font-size:17px;font-weight:700;color:var(--color-text);text-decoration:none">Katalog</a>
+    <a href="galerija.html" onClick="{{ closeMenu }}" class="vd-navlink" style="white-space:nowrap;font-size:17px;font-weight:700;color:var(--color-text);text-decoration:none">Otvori galeriju</a>
+    <a href="#kontakt" onClick="{{ closeMenu }}" class="vd-navlink" style="white-space:nowrap;font-size:17px;font-weight:700;color:var(--color-text);text-decoration:none">Kontakt</a>
+    <a href="#ponuda" onClick="{{ closeMenu }}" class="btn btn-primary vd-navcta" style="text-decoration:none;font-size:17px;font-weight:700;border-radius:999px;color:#2a1c0c;background:#f2a63a;padding:12px 26px;margin-left:auto;display:inline-flex;align-items:center">Pošalji upit</a>
+  </div>
+</nav>
+
+<section class="vd-hero" style="position:relative;background-image:linear-gradient(100deg, rgba(18,14,12,.74) 0%, rgba(18,14,12,.52) 42%, rgba(18,14,12,.18) 100%),url(assets/hero-house.jpg);background-size:cover;background-position:center">
+  <div class="{{ heroClass }}" style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:clamp(140px,14vw,210px) clamp(20px,5vw,72px) clamp(96px,12vw,180px)">
+    <span class="kicker" style="display:block;font-size:15px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#fff;margin:0 0 24px">Dekorativna opeka · Proizvodnja i ugradnja</span>
+    <h1 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(40px,6.4vw,88px);line-height:1.02;letter-spacing:-0.025em;margin:0 0 0 -0.03em;color:#fff">
+      <span style="display:block">Opeka sa</span>
+      <span style="display:block">karakterom,</span>
+      <span style="display:block;color:#ff5a3c">prostor sa pričom.</span>
+    </h1>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:40px">
+      <a href="#katalog-foto" class="btn btn-primary vd-herobtn" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:20px 40px;font-size:18px;border-radius:999px;background:var(--color-accent);color:#fff;font-family:var(--font-heading);font-weight:700;border:2px solid var(--color-accent)">Katalog</a>
+      <a href="#ponuda" class="btn btn-ghost vd-herobtn" style="position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:20px 40px;font-size:18px;border-radius:999px;background:#f2a63a;color:#2a1c0c;font-family:var(--font-heading);font-weight:700;border:2px solid #f2a63a">Pošalji upit</a>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+
+
+  <section id="galerija" style="padding:clamp(56px,8vw,104px) 0">
+    <span class="kicker" style="display:block;font-size:16px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Galerija radova</span>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin:0 0 48px">
+      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0">Galerija naših radova</h2>
+      <a href="galerija.html" class="btn btn-primary" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:16px 32px;font-size:17px;border-radius:999px;white-space:nowrap;background:var(--color-accent);color:#fff;font-family:var(--font-heading);font-weight:700;border:2px solid var(--color-accent)">Otvori galeriju</a>
+    </div>
+    <div class="vd-marquee" style="overflow:hidden;position:relative">
+      <div class="vd-track" style="display:flex;gap:0;width:max-content">
+        <image-slot id="vd-g1" shape="rounded" radius="16" src="assets/rad-1.webp" placeholder="Rad 1" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g2" shape="rounded" radius="16" src="assets/rad-2b.webp" placeholder="Rad 2" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g3" shape="rounded" radius="16" src="assets/rad-3.webp" placeholder="Rad 3" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g4" shape="rounded" radius="16" src="assets/rad-4.webp" placeholder="Rad 4" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g5" shape="rounded" radius="16" src="assets/rad-5.webp" placeholder="Rad 5" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g6" shape="rounded" radius="16" src="assets/rad-6.webp" placeholder="Rad 6" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g1" shape="rounded" radius="16" src="assets/rad-1.webp" placeholder="Rad 1" aria-hidden="true" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g2" shape="rounded" radius="16" src="assets/rad-2b.webp" placeholder="Rad 2" aria-hidden="true" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g3" shape="rounded" radius="16" src="assets/rad-3.webp" placeholder="Rad 3" aria-hidden="true" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g4" shape="rounded" radius="16" src="assets/rad-4.webp" placeholder="Rad 4" aria-hidden="true" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g5" shape="rounded" radius="16" src="assets/rad-5.webp" placeholder="Rad 5" aria-hidden="true" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+        <image-slot id="vd-g6" shape="rounded" radius="16" src="assets/rad-6.webp" placeholder="Rad 6" aria-hidden="true" style="flex:none;width:clamp(240px,24vw,340px);aspect-ratio:4/5;margin-right:20px;border-radius:16px;overflow:hidden"></image-slot>
+      </div>
+    </div>
+    <p style="font-size:14px;line-height:1.6;margin:24px 0 0;color:color-mix(in srgb, var(--color-text) 62%, transparent)">Traka se pomera automatski — prevucite svoje fotografije u polja. Više radova na <a href="https://instagram.com/dekorativnaopeka_vujicdekor9" target="_blank" rel="noopener">Instagramu</a>.</p>
+  </section>
+
+  <hr style="height:2px;border:0;margin:0;background:var(--color-divider)">
+
+  <section id="katalog-foto" style="padding:clamp(56px,8vw,104px) 0">
+    <span class="kicker" style="display:block;font-size:16px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Katalog</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 48px">Iz našeg kataloga.</h2>
+    <div class="vd-kat-grid" style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <figcaption style="text-align:center;font-family:var(--font-heading);font-weight:800;font-size:clamp(16px,1.4vw,19px);letter-spacing:-0.01em;color:var(--color-text);min-height:26px;display:flex;align-items:center;justify-content:center">Unuče 1</figcaption>
+        <image-slot id="vd-kat-1" shape="rounded" radius="16" src="assets/kat-1.png" placeholder="Slika 1" style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden"></image-slot>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <figcaption style="text-align:center;font-family:var(--font-heading);font-weight:800;font-size:clamp(16px,1.4vw,19px);letter-spacing:-0.01em;color:var(--color-text);min-height:26px;display:flex;align-items:center;justify-content:center">Unuče 2</figcaption>
+        <image-slot id="vd-kat-2" shape="rounded" radius="16" src="assets/kat-2.png" placeholder="Slika 2" style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden"></image-slot>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <figcaption style="text-align:center;font-family:var(--font-heading);font-weight:800;font-size:clamp(16px,1.4vw,19px);letter-spacing:-0.01em;color:var(--color-text);min-height:26px;display:flex;align-items:center;justify-content:center">Unuče 3</figcaption>
+        <image-slot id="vd-kat-3" shape="rounded" radius="16" src="assets/kat-3.jpg" placeholder="Slika 3" style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden"></image-slot>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <figcaption style="text-align:center;font-family:var(--font-heading);font-weight:800;font-size:clamp(16px,1.4vw,19px);letter-spacing:-0.01em;color:var(--color-text);min-height:26px;display:flex;align-items:center;justify-content:center">Unuče 4</figcaption>
+        <image-slot id="vd-kat-4" shape="rounded" radius="16" src="assets/kat-4.png" placeholder="Slika 4" style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden"></image-slot>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <figcaption style="text-align:center;font-family:var(--font-heading);font-weight:800;font-size:clamp(16px,1.4vw,19px);letter-spacing:-0.01em;color:var(--color-text);min-height:26px;display:flex;align-items:center;justify-content:center">Unuče 5</figcaption>
+        <image-slot id="vd-kat-5" shape="rounded" radius="16" src="assets/kat-5.png" placeholder="Slika 5" style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden"></image-slot>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <figcaption style="text-align:center;font-family:var(--font-heading);font-weight:800;font-size:clamp(16px,1.4vw,19px);letter-spacing:-0.01em;color:var(--color-text);min-height:26px;display:flex;align-items:center;justify-content:center">Unuče 6</figcaption>
+        <image-slot id="vd-kat-6" shape="rounded" radius="16" src="assets/kat-6.png" placeholder="Slika 6" style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden"></image-slot>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <figcaption style="text-align:center;font-family:var(--font-heading);font-weight:800;font-size:clamp(16px,1.4vw,19px);letter-spacing:-0.01em;color:var(--color-text);min-height:26px;display:flex;align-items:center;justify-content:center">Crvena</figcaption>
+        <image-slot id="vd-kat-7" shape="rounded" radius="16" src="assets/kat-7.png" placeholder="Slika 7" style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden"></image-slot>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <figcaption style="text-align:center;font-family:var(--font-heading);font-weight:800;font-size:clamp(16px,1.4vw,19px);letter-spacing:-0.01em;color:var(--color-text);min-height:26px;display:flex;align-items:center;justify-content:center">Krem</figcaption>
+        <image-slot id="vd-kat-8" shape="rounded" radius="16" src="assets/kat-8.png" placeholder="Slika 8" style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden"></image-slot>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <figcaption style="text-align:center;font-family:var(--font-heading);font-weight:800;font-size:clamp(16px,1.4vw,19px);letter-spacing:-0.01em;color:var(--color-text);min-height:26px;display:flex;align-items:center;justify-content:center">Antracit Mix</figcaption>
+        <image-slot id="vd-kat-9" shape="rounded" radius="16" src="assets/kat-9.png" placeholder="Slika 9" style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden"></image-slot>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <figcaption style="text-align:center;font-family:var(--font-heading);font-weight:800;font-size:clamp(11px,1vw,13px);white-space:nowrap;letter-spacing:-0.01em;color:var(--color-text);min-height:26px;display:flex;align-items:center;justify-content:center">Mix paljena braon - antracit</figcaption>
+        <image-slot id="vd-kat-10" shape="rounded" radius="16" src="assets/kat-10.png" placeholder="Slika 10" style="width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden"></image-slot>
+      </figure>
+    </div>
+  </section>
+
+  <div class="vd-tri" style="position:relative;margin-top:clamp(24px,3vw,32px)">
+    <div class="vd-grid3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div class="vd-tri3" style="padding:clamp(24px,3vw,36px);border:2px solid var(--color-divider);border-radius:16px;background:var(--color-bg)">
+        <p class="vd-tri3-title" style="font-family:var(--font-heading);font-weight:900;font-size:clamp(22px,2.2vw,30px);line-height:1.1;margin:0;color:var(--color-accent)">Prirodni materijali</p>
+        <p style="font-size:14px;line-height:1.5;margin:12px 0 0;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Bez veštačkih smesa — ista receptura kao nekad.</p>
+      </div>
+      <div class="vd-tri3" style="padding:clamp(24px,3vw,36px);border:2px solid var(--color-divider);border-radius:16px;background:var(--color-bg)">
+        <p class="vd-tri3-title" style="font-family:var(--font-heading);font-weight:900;font-size:clamp(22px,2.2vw,30px);line-height:1.1;margin:0;color:var(--color-accent)">Ručna izrada</p>
+        <p style="font-size:14px;line-height:1.5;margin:12px 0 0;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Tradicionalni postupak, svaki komad sa karakterom.</p>
+      </div>
+      <div class="vd-tri3" style="padding:clamp(24px,3vw,36px);border:2px solid var(--color-divider);border-radius:16px;background:var(--color-bg)">
+        <p class="vd-tri3-title" style="font-family:var(--font-heading);font-weight:900;font-size:clamp(22px,2.2vw,30px);line-height:1.1;margin:0;color:var(--color-accent)">Ključ u ruke</p>
+        <p style="font-size:14px;line-height:1.5;margin:12px 0 0;color:color-mix(in srgb, var(--color-text) 70%, transparent)">Proizvodnja i ugradnja — jedan izvođač, jedna odgovornost.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="vd-rest" style="background-image:linear-gradient(var(--color-bg) 0%,rgba(244,241,236,.82) 8%,rgba(244,241,236,.82) 100%),url(assets/bg-rest-brick.webp);background-size:cover;background-position:center;background-attachment:fixed">
+<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+
+  <figure style="margin:0 0 clamp(40px,6vw,72px);padding:clamp(48px,7vw,88px) 0 0">
+    <p style="font-family:var(--font-heading);font-weight:900;font-size:clamp(30px,3.6vw,52px);line-height:1.05;letter-spacing:-0.02em;margin:0 0 24px;text-align:left;color:var(--color-accent)">Pre i posle završetka radova</p>
+    <div class="vd-ba-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,20px)">
+      <div class="vd-ba" ref="{{ setBA }}" style="position:relative;width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden;touch-action:pan-y;cursor:ew-resize;user-select:none">
+        <img src="assets/feat-photo-2.webp" alt="Radovi VUJIĆ DEKOR 9 — posle" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none">
+        <div class="vd-ba-before" style="position:absolute;inset:0;pointer-events:none;clip-path:inset(0 50% 0 0)">
+          <img src="assets/feat-photo.webp" alt="Radovi VUJIĆ DEKOR 9 — pre" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        </div>
+        <span style="position:absolute;left:14px;bottom:12px;z-index:3;pointer-events:none;font-family:var(--font-heading);font-weight:700;font-size:12px;letter-spacing:0.14em;color:#fff;background:rgba(20,16,14,.55);padding:5px 10px;border-radius:999px;backdrop-filter:blur(3px)">PRE</span>
+        <span style="position:absolute;right:14px;bottom:12px;z-index:3;pointer-events:none;font-family:var(--font-heading);font-weight:700;font-size:12px;letter-spacing:0.14em;color:#fff;background:rgba(20,16,14,.55);padding:5px 10px;border-radius:999px;backdrop-filter:blur(3px)">POSLE</span>
+        <div class="vd-ba-line" style="position:absolute;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;z-index:4;background:#fff;box-shadow:0 0 0 1px rgba(20,16,14,.25), 0 2px 14px rgba(20,16,14,.45);pointer-events:none">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:#fff;box-shadow:0 6px 20px -6px rgba(20,16,14,.6), 0 0 0 1px rgba(20,16,14,.18);display:flex;align-items:center;justify-content:center;gap:2px;color:var(--color-accent)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7l-5 5 5 5"></path></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 7l5 5-5 5"></path></svg>
+          </div>
+        </div>
+      </div>
+      <div class="vd-ba" ref="{{ setBA }}" style="position:relative;width:100%;aspect-ratio:4/3;border-radius:16px;overflow:hidden;touch-action:pan-y;cursor:ew-resize;user-select:none">
+        <img src="assets/posle-kuca-2.jpg" alt="Radovi VUJIĆ DEKOR 9 — posle" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none">
+        <div class="vd-ba-before" style="position:absolute;inset:0;pointer-events:none;clip-path:inset(0 50% 0 0)">
+          <img src="assets/pre-kuca-2.jpg" alt="Radovi VUJIĆ DEKOR 9 — pre" draggable="false" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        </div>
+        <span style="position:absolute;left:14px;bottom:12px;z-index:3;pointer-events:none;font-family:var(--font-heading);font-weight:700;font-size:12px;letter-spacing:0.14em;color:#fff;background:rgba(20,16,14,.55);padding:5px 10px;border-radius:999px;backdrop-filter:blur(3px)">PRE</span>
+        <span style="position:absolute;right:14px;bottom:12px;z-index:3;pointer-events:none;font-family:var(--font-heading);font-weight:700;font-size:12px;letter-spacing:0.14em;color:#fff;background:rgba(20,16,14,.55);padding:5px 10px;border-radius:999px;backdrop-filter:blur(3px)">POSLE</span>
+        <div class="vd-ba-line" style="position:absolute;top:0;bottom:0;left:50%;width:3px;margin-left:-1.5px;z-index:4;background:#fff;box-shadow:0 0 0 1px rgba(20,16,14,.25), 0 2px 14px rgba(20,16,14,.45);pointer-events:none">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:#fff;box-shadow:0 6px 20px -6px rgba(20,16,14,.6), 0 0 0 1px rgba(20,16,14,.18);display:flex;align-items:center;justify-content:center;gap:2px;color:var(--color-accent)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7l-5 5 5 5"></path></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 7l5 5-5 5"></path></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </figure>
+
+  <hr style="height:2px;border:0;margin:0;background:var(--color-divider)">
+
+  <section id="onama" style="position:relative;width:100vw;max-width:100vw;margin-left:calc(-50vw + 50%);padding:clamp(48px,6vw,96px) clamp(20px,5vw,72px);background-image:url(assets/onama-bg.jpg);background-size:cover;background-position:center;min-height:40vw;display:flex;align-items:center">
+    <div class="vd-grid2" style="width:100%;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,72px);align-items:start">
+    <div>
+      <span class="kicker" style="display:block;font-size:24px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#ff6a4d;margin:0 0 20px;text-shadow:0 2px 12px rgba(0,0,0,.6)">O nama</span>
+      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0;color:#fff;text-shadow:0 2px 16px rgba(0,0,0,.7)">Zanat pre svega.</h2>
+      <div style="margin-top:28px;display:flex;flex-direction:column;gap:16px">
+        <div class="vd-stat" style="width:100%;box-sizing:border-box;padding:18px 20px;border-radius:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+          <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:6px;text-shadow:0 2px 10px rgba(0,0,0,.7)">Proizvedeno preko</div>
+          <div class="vd-count" data-to="20000" style="white-space:nowrap;font-family:var(--font-heading);font-weight:900;font-size:clamp(40px,4.6vw,60px);line-height:1;color:#ff6a4d;text-shadow:0 2px 16px rgba(0,0,0,.7)">0<span style="font-size:.5em"> m²</span></div>
+        </div>
+        <div class="vd-stat" style="width:100%;box-sizing:border-box;padding:18px 20px;border-radius:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)">
+          <div style="font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:6px;text-shadow:0 2px 10px rgba(0,0,0,.7)">Ugrađeno preko</div>
+          <div class="vd-count" data-to="12000" style="white-space:nowrap;font-family:var(--font-heading);font-weight:900;font-size:clamp(40px,4.6vw,60px);line-height:1;color:#ff6a4d;text-shadow:0 2px 16px rgba(0,0,0,.7)">0<span style="font-size:.5em"> m²</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:clamp(18px,1.8vw,23px);line-height:1.7;margin:0;max-width:58ch;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.85)">
+        VUJIĆ DEKOR 9 - porodična proizvodnja specijalizovana za izradu dekorativne opeke (ciglice, listele) koja se pravi od prirodnih materijala. Ne kupujemo gotove obloge mi ih proizvodimo, a zatim i ugrađujemo.
+      </p>
+      <p style="font-size:clamp(18px,1.8vw,23px);line-height:1.7;margin:24px 0 0;max-width:58ch;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.85)">
+        Radimo za privatne investitore koji uređuju kuću ili stan, kao i za izvođače kojima treba pouzdan partner sa stabilnom proizvodnjom. U oba slučaja dobijate isto: proizvod sa dušom i zid koji traje.
+      </p>
+    </div>
+    </div>
+  </section>
+
+  <hr style="height:2px;border:0;margin:0;background:var(--color-divider)">
+
+  <section id="proizvodi" style="padding:clamp(56px,8vw,104px) 0">
+    <span class="kicker" style="display:block;font-size:16px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Proizvodi</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 48px;max-width:20ch">Ciglica za svaku primenu.</h2>
+    <div class="vd-grid3" ref="{{ setProd }}" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <sc-for list="{{ products }}" as="p" hint-placeholder-count="3">
+        <article class="vd-prod" style="background:var(--color-bg);padding:clamp(24px,2.6vw,36px);display:flex;flex-direction:column;gap:16px;border:2px solid var(--color-divider);border-radius:16px">
+          <span style="color:var(--color-accent)" dangerouslySetInnerHTML="{{ p.icon }}"></span>
+          <span class="tag tag-outline" style="align-self:flex-start">{{ p.tag }}</span>
+          <h3 class="vd-prod-title" style="font-family:var(--font-heading);font-weight:800;font-size:clamp(20px,1.9vw,26px);line-height:1.15;letter-spacing:-0.01em;margin:0">{{ p.title }}</h3>
+          <p style="font-size:15px;line-height:1.6;margin:0;color:color-mix(in srgb, var(--color-text) 76%, transparent)">{{ p.body }}</p>
+        </article>
+      </sc-for>
+    </div>
+    <p style="font-size:14px;line-height:1.6;margin:28px 0 0;color:color-mix(in srgb, var(--color-text) 62%, transparent)">Boje, dimenzije i završnice radimo po zahtevu. Za tačan izbor i cenu — pošaljite upit.</p>
+  </section>
+
+  <hr style="height:2px;border:0;margin:0;background:var(--color-divider)">
+
+  <section id="usluge" style="padding:clamp(56px,8vw,104px) 0">
+    <div class="vd-svc-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch">
+      <div class="vd-svc-reveal vd-svc-glow-static" style="display:flex;position:relative">
+        <div class="vd-svc" style="background:var(--color-bg);padding:clamp(24px,2.6vw,36px);border:2px solid var(--color-divider);border-radius:16px;flex:1;display:flex;flex-direction:column">
+          <span style="color:var(--color-accent);margin-bottom:4px"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V9l8-5 8 5v11"/><path d="M9 20v-6h6v6"/><path d="M4 12h16"/></svg></span>
+          <p class="vd-svc-num" style="font-family:var(--font-heading);font-weight:900;font-size:clamp(15px,1.3vw,17px);margin:0;font-feature-settings:'tnum' 1">01</p>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(20px,1.9vw,26px);line-height:1.1;letter-spacing:-0.02em;margin:16px 0 0">Proizvodnja</h3>
+          <p style="font-size:15.5px;line-height:1.65;margin:18px 0 0;max-width:44ch;color:color-mix(in srgb, var(--color-text) 80%, transparent)">Ciglicu livimo i sušimo u sopstvenoj radionici, od prirodnih materijala i po tradicionalnoj recepturi. Kontrolišemo boju, teksturu i debljinu — pa svaka serija ima ujednačen, ali živ izgled.</p>
+        </div>
+      </div>
+      <div class="vd-svc-link" aria-hidden="true" style="display:none">
+        <span class="vd-svc-particle"></span>
+        <svg class="vd-svc-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+      </div>
+      <div class="vd-svc-reveal vd-svc-reveal-2 vd-svc-glow" style="display:flex;position:relative">
+        <div class="vd-svc" style="background:var(--color-bg);padding:clamp(24px,2.6vw,36px);border:2px solid var(--color-divider);border-radius:16px;flex:1;display:flex;flex-direction:column">
+          <span style="color:var(--color-accent);margin-bottom:4px"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2l6 6-9.5 9.5a2.12 2.12 0 0 1-3-3L17 5"/><path d="M3 21l4-1 10-10"/></svg></span>
+          <p class="vd-svc-num" style="font-family:var(--font-heading);font-weight:900;font-size:clamp(15px,1.3vw,17px);margin:0;font-feature-settings:'tnum' 1">02</p>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(20px,1.9vw,26px);line-height:1.1;letter-spacing:-0.02em;margin:16px 0 0">Ugradnja</h3>
+          <p style="font-size:15.5px;line-height:1.65;margin:18px 0 0;max-width:44ch;color:color-mix(in srgb, var(--color-text) 80%, transparent)">Izlazimo na teren, pripremamo podlogu i ugrađujemo — fuga po fuga, do čistog završetka. Radimo enterijer i fasadu, unutra i napolju, sa garancijom na izvedeni rad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr style="height:2px;border:0;margin:0;background:var(--color-divider)">
+
+  <section id="proces" style="padding:clamp(56px,8vw,104px) 0">
+    <span class="kicker" style="display:block;font-size:16px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Kako radimo</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 8px">Četiri koraka do zida.</h2>
+    <div class="vd-proces-list" ref="{{ setProces }}" style="margin-top:40px;position:relative">
+      <div class="vd-proces-line" aria-hidden="true" style="position:absolute;left:4px;top:0;width:2px;height:0;background:var(--color-accent);z-index:1"></div>
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div class="vd-proces-row" style="display:grid;grid-template-columns:minmax(64px,120px) minmax(0,360px) minmax(0,1fr);gap:20px clamp(24px,4vw,64px);align-items:baseline;padding:clamp(20px,2.4vw,32px) 0;border-top:2px solid var(--color-divider);opacity:0;transform:translateY(16px);transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1)">
+          <p style="position:relative;font-family:var(--font-heading);font-weight:900;font-size:15px;line-height:1.6;margin:0;padding-left:24px;font-feature-settings:'tnum' 1">
+            <span class="vd-proces-dot" style="position:absolute;left:0;top:8px;width:10px;height:10px;background:var(--color-divider);transition:background .3s ease"></span>{{ s.num }}
+          </p>
+          <h3 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(20px,1.9vw,26px);line-height:1.15;letter-spacing:-0.01em;margin:0">{{ s.title }}</h3>
+          <p style="font-size:15.5px;line-height:1.65;margin:0;max-width:52ch;color:color-mix(in srgb, var(--color-text) 78%, transparent)">{{ s.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <hr style="height:2px;border:0;margin:0;background:var(--color-divider)">
+
+  <section id="zasto" style="position:relative;width:100vw;max-width:100vw;margin-left:calc(-50vw + 50%);overflow-x:clip;padding:clamp(56px,8vw,104px) clamp(20px,5vw,72px);background-image:linear-gradient(rgba(244,241,236,.12),rgba(244,241,236,.18)),url(assets/zasto-house.png);background-size:cover;background-position:center">
+    <div style="max-width:1200px;margin:0 auto">
+    <span class="kicker" style="display:block;font-size:22px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px;text-shadow:0 0 4px #fff, 0 0 4px #fff, 0 1px 2px rgba(255,255,255,.9)">Zašto VUJIĆ DEKOR 9</span>
+    <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 clamp(40px,6vw,72px);max-width:22ch;text-shadow:0 0 4px #fff, 0 0 4px #fff, 0 1px 2px rgba(255,255,255,.9)">Od gline do vašeg zida — jedna putanja.</h2>
+    <div class="vd-journey" ref="{{ setJourney }}" style="position:relative">
+      <svg class="vd-journey-svg" ref="{{ setSvg }}" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:0;pointer-events:none;display:none">
+        <path ref="{{ setTrackPath }}" fill="none" stroke="color-mix(in srgb, var(--color-text) 14%, transparent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path class="vd-draw" ref="{{ setDrawPath }}" fill="none" stroke="none" stroke-width="0"></path>
+        <g ref="{{ setArrow }}" style="opacity:0;display:none">
+          <circle r="7" fill="var(--color-accent)"></circle>
+          <path d="M -3 -4 L 5 0 L -3 4 Z" fill="var(--color-bg)"></path>
+        </g>
+      </svg>
+      <div class="vd-nodes">
+        <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="4">
+          <div class="vd-node" data-node="{{ $index }}" style="position:relative;z-index:1;border-radius:16px;background:rgba(255,255,255,.08);backdrop-filter:blur(2px);border:2px solid var(--color-divider);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;gap:10px;padding:clamp(24px,2.6vw,36px)">
+            <span class="vd-node-idx" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-heading);font-weight:900;font-size:12px;letter-spacing:0.12em;color:color-mix(in srgb, var(--color-text) 45%, transparent)">{{ r.icon }}</span>
+            <h3 class="vd-node-title" style="font-family:var(--font-heading);font-weight:800;font-size:clamp(16px,1.5vw,20px);line-height:1.15;letter-spacing:-0.01em;margin:0">{{ r.step }}. {{ r.title }}</h3>
+            <p style="font-size:12.5px;line-height:1.45;margin:0;color:var(--color-text);font-weight:600;text-shadow:0 0 6px rgba(255,255,255,.7)">{{ r.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <hr style="height:2px;border:0;margin:0;background:var(--color-divider)">
+
+  <section id="faq" class="vd-grid2" style="padding:clamp(56px,8vw,104px) 0;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(24px,4vw,72px);align-items:start">
+    <div>
+      <span class="kicker" style="display:block;font-size:16px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Česta pitanja</span>
+      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(26px,3vw,40px);line-height:1.08;letter-spacing:-0.02em;margin:0">Pre nego što pitate.</h2>
+    </div>
+    <div>
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+        <details class="vd-faq" style="border-top:2px solid var(--color-divider);padding:0">
+          <summary style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;font-family:var(--font-heading);font-weight:700;font-size:clamp(16px,1.5vw,20px);line-height:1.3;letter-spacing:-0.01em">
+            <span>{{ q.q }}</span>
+            <span class="vd-plus" style="flex:none;font-family:var(--font-heading);font-weight:400;font-size:24px;line-height:1;color:var(--color-accent);transition:transform .18s ease">+</span>
+          </summary>
+          <p style="font-size:15.5px;line-height:1.65;margin:0 0 22px;max-width:60ch;color:color-mix(in srgb, var(--color-text) 80%, transparent)">{{ q.a }}</p>
+        </details>
+      </sc-for>
+    </div>
+  </section>
+
+</div>
+
+<section id="ponuda" data-screen-label="Kontakt forma" style="position:relative;overflow:hidden;color:#fffaf4;background:radial-gradient(900px 520px at 12% 0%, rgba(255,214,190,.28), transparent 62%), radial-gradient(800px 600px at 100% 100%, rgba(90,14,4,.38), transparent 60%), linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 88%, #fff) 0%, var(--color-accent) 45%, var(--color-accent-700) 130%)">
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;opacity:1;background-image:repeating-linear-gradient(0deg, rgba(255,255,255,.055) 0 2px, transparent 2px 36px), repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 2px, transparent 2px 84px);-webkit-mask-image:linear-gradient(180deg, transparent 0%, #000 40%, transparent 100%);mask-image:linear-gradient(180deg, transparent 0%, #000 40%, transparent 100%)"></div>
+  <div class="vd-grid2" style="position:relative;max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,72px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,88px);align-items:center">
+    <div style="min-width:0">
+      <div class="vd-c-rv"><span style="display:block;font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:#fffaf4;opacity:.85;margin:0 0 22px">Kontakt</span>
+      <h2 style="font-family:var(--font-heading);font-weight:900;font-size:clamp(34px,4.6vw,64px);line-height:1.02;letter-spacing:-0.025em;margin:0;color:#fffaf4;"><span style="display:block">Recite šta</span><span style="display:block">vam treba</span><span style="display:block">javljamo se</span><span style="display:block">sa cenom.</span></h2>
+      </div>
+    </div>
+    <div class="vd-c-rv" style="transition-delay:200ms;min-width:0"><div class="vd-ccard" style="background:#fbf7f1;color:#201e1d;border-radius:24px;padding:clamp(24px,3.4vw,44px);box-shadow:0 2px 4px rgba(60,12,4,.1), 0 26px 60px -24px rgba(60,12,4,.55)">
+      <h3 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(22px,2vw,28px);letter-spacing:-0.015em;margin:0 0 6px;color:#201e1d">Zatražite ponudu</h3>
+      <p style="margin:0 0 24px;font-size:15px;line-height:1.5;color:#6b5a4e">Javljamo se u najkraćem roku, sa cenom.</p>
+      <form action="https://formsubmit.co/vujicdekor@gmail.com" method="POST" class="vd-form2" style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <input type="hidden" name="_subject" value="Novi upit sa sajta — VUJIĆ DEKOR 9">
+        
+        <input type="hidden" name="_next" value="https://jovanovicnemanja791-afk.github.io/vujicfinal/hvala.html">
+        
+        <input type="hidden" name="_captcha" value="false">
+        
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
+        <label class="field" style="display:flex;flex-direction:column;gap:8px;color:#3a2a22;min-width:0"><span style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#6b5a4e">Ime i prezime</span><input name="ime" required="{{ true }}" class="input vd-cinput" style="width:100%;box-sizing:border-box;border:1.5px solid #e1d8cb;background:#fffdf9;color:#201e1d;border-radius:14px;padding:14px 16px;font-size:16px" placeholder="Petar Petrović"></label>
+        <label class="field" style="display:flex;flex-direction:column;gap:8px;color:#3a2a22;min-width:0"><span style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#6b5a4e">Telefon</span><input name="tel" required="{{ true }}" class="input vd-cinput" style="width:100%;box-sizing:border-box;border:1.5px solid #e1d8cb;background:#fffdf9;color:#201e1d;border-radius:14px;padding:14px 16px;font-size:16px" placeholder="06x xxx xxxx"></label>
+        <label class="field" style="display:flex;flex-direction:column;gap:8px;color:#3a2a22;min-width:0;grid-column:1/-1"><span style="font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#6b5a4e">Šta vam treba?</span><textarea name="poruka" rows="4" required="{{ true }}" class="input vd-cinput" style="width:100%;box-sizing:border-box;border:1.5px solid #e1d8cb;background:#fffdf9;color:#201e1d;border-radius:14px;padding:14px 16px;font-size:16px;resize:vertical;font-family:inherit" placeholder="Npr. fasada oko 40 m², enterijer, ili samo materijal — kvadratura, lokacija, rok."></textarea></label>
+        <button type="submit" class="btn vd-csend" style="grid-column:1/-1;justify-self:stretch;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--color-accent);color:#fff;border:0;border-radius:999px;padding:18px 34px;font-family:var(--font-heading);font-weight:800;font-size:17px;letter-spacing:0.02em;cursor:pointer">Pošalji upit</button>
+      </form>
+    </div></div>
+  </div>
+</section>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,72px)">
+  <section id="kontakt" class="vd-grid2" style="padding:clamp(56px,8vw,104px) 0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,64px);align-items:start">
+    <div>
+      <span class="kicker" style="display:block;font-size:16px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);margin:0 0 20px">Kontakt i lokacija</span>
+      <h2 style="font-family:var(--font-heading);font-weight:800;font-size:clamp(26px,3vw,40px);line-height:1.08;letter-spacing:-0.02em;margin:0 0 28px">Mionica.</h2>
+      <div style="display:flex;flex-direction:column;gap:14px;font-size:clamp(19px,1.7vw,22px);line-height:1.4">
+        <div class="vd-glow"><span class="vd-glow-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div style="min-width:0"><div style="font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 60%, transparent);margin-bottom:4px">Adresa</div>Mite Rakića 3/21, 14242 Mionica</div></div>
+        <div class="vd-glow"><span class="vd-glow-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div style="min-width:0"><div style="font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 60%, transparent);margin-bottom:4px">Telefon</div><a href="tel:+381643875575">064 3875575</a></div></div>
+        <div class="vd-glow"><span class="vd-glow-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><div style="min-width:0"><div style="font-size:14px;letter-spacing:0.08em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 60%, transparent);margin-bottom:4px">Email</div><a href="mailto:vujicdekor@gmail.com">vujicdekor@gmail.com</a></div></div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap">
+          <a href="https://instagram.com/dekorativnaopeka_vujicdekor9" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://tiktok.com/@vujicdekor9" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </div>
+    </div>
+    <div style="border:2px solid var(--color-divider);border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -15px rgba(0,0,0,.45),0 12px 24px -8px rgba(0,0,0,.3)">
+      <iframe title="Lokacija — Mionica" src="https://www.google.com/maps?q=Mite%20Raki%C4%87a%2C%20Mionica&output=embed" style="width:100%;height:clamp(280px,38vw,420px);border:0;display:block" loading="lazy"></iframe>
+    </div>
+  </section>
+</div>
+
+<footer style="border-top:2px solid var(--color-divider);background:#fff">
+  <div style="max-width:1200px;margin:0 auto;padding:clamp(28px,4vw,48px) clamp(20px,5vw,72px);display:flex;justify-content:flex-start;gap:clamp(20px,3vw,40px);flex-wrap:wrap;align-items:center">
+    <span style="display:inline-flex;align-items:center;gap:12px;font-family:var(--font-heading);font-weight:900;letter-spacing:-0.01em;font-size:18px">
+      <img src="assets/logo-full.png" alt="VUJIĆ DEKOR 9 logo" style="height:160px;width:auto;object-fit:contain;display:block">
+    </span>
+    <span style="display:inline-flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;text-align:center">
+      <span style="display:inline-flex;align-items:center;justify-content:center;gap:12px">
+        <a href="https://instagram.com/dekorativnaopeka_vujicdekor9" target="_blank" rel="noopener" aria-label="Instagram" class="vd-social" style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:2px solid var(--color-divider);border-radius:50%;color:var(--color-text);text-decoration:none;transition:background .25s ease,color .25s ease,border-color .25s ease,transform .25s ease">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://tiktok.com/@vujicdekor9" target="_blank" rel="noopener" aria-label="TikTok" class="vd-social" style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:2px solid var(--color-divider);border-radius:50%;color:var(--color-text);text-decoration:none;transition:background .25s ease,color .25s ease,border-color .25s ease,transform .25s ease">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.1 1.5 3.6 3.5 3.9v2.6c-1.3.1-2.5-.3-3.5-1v5.9c0 3.3-2.4 5.6-5.4 5.6-2.9 0-5.1-2.1-5.1-4.9 0-3 2.4-5 5.3-4.8v2.7c-.4-.1-.9-.2-1.3-.1-1.2.2-2 1-1.9 2.3.1 1.2 1 2.1 2.2 2.1 1.4 0 2.3-1 2.3-2.7V3h3.4z"/></svg>
+        </a>
+      </span>
+      <span style="font-size:13px;color:color-mix(in srgb, var(--color-text) 60%, transparent)">Dekorativna opeka · Proizvodnja i ugradnja · Mionica</span>
+    </span>
+  </div>
+</footer>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false, sentName: "", playing: false, cur: 0, dur: 0, slide: 0, loadPct: 0, loadDone: false, menuOpen: false };
+  toggleMenu = (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState((s) => ({ menuOpen: !s.menuOpen })); };
+  closeMenu = () => { if (this.state.menuOpen) this.setState({ menuOpen: false }); };
+  componentDidUpdate(_p, prev) {
+    if (prev.menuOpen !== this.state.menuOpen) {
+      document.body.style.overflow = this.state.menuOpen ? "hidden" : "";
+    }
+  }
+
+  setVideo = (el) => {
+    this.video = el;
+    if (!el || el._vdBound) return;
+    el._vdBound = true;
+    el.muted = true;
+    el.addEventListener("timeupdate", () => this.setState({ cur: el.currentTime, dur: el.duration || 0 }));
+    el.addEventListener("loadedmetadata", () => this.setState({ dur: el.duration || 0 }));
+    el.addEventListener("play", () => this.setState({ playing: true }));
+    el.addEventListener("pause", () => this.setState({ playing: false }));
+    const p = el.play(); if (p && p.catch) p.catch(() => {});
+  };
+  togglePlay = () => {
+    const v = this.video; if (!v) return;
+    if (v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}); } else v.pause();
+  };
+  onSeek = (e) => {
+    const v = this.video; if (!v || !v.duration) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    v.currentTime = ((e.clientX - r.left) / r.width) * v.duration;
+  };
+
+  setBA = (el) => {
+    this.ba = el;
+    if (!el || el._vdBA) return;
+    el._vdBA = true;
+    const clip = el.querySelector(".vd-ba-before");
+    const line = el.querySelector(".vd-ba-line");
+    let pending = null, raf = 0;
+    const paint = () => {
+      raf = 0;
+      const pct = pending;
+      clip.style.clipPath = "inset(0 " + (100 - pct) + "% 0 0)";
+      line.style.left = pct + "%";
+    };
+    const apply = (pct) => {
+      pending = Math.max(0, Math.min(100, pct));
+      if (!raf) raf = requestAnimationFrame(paint);
+    };
+    const fromEvent = (e) => {
+      const r = el.getBoundingClientRect();
+      apply(((e.clientX - r.left) / r.width) * 100);
+    };
+    let dragging = false;
+    el.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      try { el.setPointerCapture(e.pointerId); } catch (_) {}
+      fromEvent(e);
+      e.preventDefault();
+    });
+    el.addEventListener("pointermove", (e) => { if (dragging) fromEvent(e); });
+    const stop = (e) => { dragging = false; try { el.releasePointerCapture(e.pointerId); } catch (_) {} };
+    el.addEventListener("pointerup", stop);
+    el.addEventListener("pointercancel", stop);
+    el.addEventListener("pointerleave", () => { dragging = false; });
+
+    // Scroll-triggered hint animation (once, cancelled by any interaction)
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !("IntersectionObserver" in window)) return;
+    const W = (window.__vdBA = window.__vdBA || { touched: false, stops: [] });
+    let hraf = 0, running = false;
+    const endHint = () => {
+      running = false;
+      if (hraf) cancelAnimationFrame(hraf);
+      hraf = 0;
+      line.style.filter = "";
+    };
+    W.stops.push(endHint);
+    el.addEventListener("pointerdown", () => { W.touched = true; W.stops.forEach((f) => f()); }, true);
+    const pts = [50, 43, 57, 43, 57, 43, 57, 50];
+    const durs = [320, 380, 380, 380, 380, 380, 380, 320];
+    const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+    const run = () => {
+      if (W.touched) return;
+      running = true;
+      line.style.transition = "filter .3s ease";
+      line.style.filter = "drop-shadow(0 0 8px rgba(255,255,255,.55))";
+      let i = 0, t0 = performance.now();
+      const step = (now) => {
+        if (!running || W.touched) return endHint();
+        const t = Math.min(1, (now - t0) / durs[i]);
+        apply(pts[i] + (pts[i + 1] - pts[i]) * ease(t));
+        if (t >= 1) { i++; t0 = now; if (i >= durs.length) { apply(50); return endHint(); } }
+        hraf = requestAnimationFrame(step);
+      };
+      hraf = requestAnimationFrame(step);
+    };
+    const io = new IntersectionObserver((es) => {
+      if (!es.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      setTimeout(run, 500);
+    }, { threshold: 0.5 });
+    io.observe(el);
+  };
+
+  setProd = (el) => {
+    if (!el || el._vdP) return;
+    el._vdP = true;
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const cards = el.querySelectorAll(".vd-prod");
+    if (reduce) { cards.forEach((c) => c.classList.add("is-in")); return; }
+    const io = new IntersectionObserver((es) => {
+      es.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const step = cards.length > 1 ? 1400 / cards.length : 0;
+        cards.forEach((c, i) => setTimeout(() => c.classList.add("is-in"), i * step));
+        io.disconnect();
+      });
+    }, { threshold: 0.2 });
+    io.observe(el);
+  };
+
+  setCounters = (el) => {
+    if (!el || el._vdC) return;
+    el._vdC = true;
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const fmt = (n) => Math.round(n).toLocaleString("sr-RS").replace(/\./g, " ");
+    const run = (node) => {
+      const to = parseInt(node.getAttribute("data-to"), 10) || 0;
+      const suffix = node.querySelector("span") ? node.querySelector("span").outerHTML : "";
+      if (reduce) { node.innerHTML = fmt(to) + suffix; return; }
+      const dur = 1600, t0 = performance.now();
+      const tick = (t) => {
+        const p = Math.min(1, (t - t0) / dur);
+        const e = 1 - Math.pow(1 - p, 3);
+        node.innerHTML = fmt(to * e) + suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver((es) => {
+      es.forEach((e) => {
+        if (e.isIntersecting) { run(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    el.querySelectorAll(".vd-count").forEach((n) => io.observe(n));
+  };
+
+  setProces = (el) => {
+    this.proces = el;
+    if (!el || el._vdP) return;
+    el._vdP = true;
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const rows = Array.from(el.querySelectorAll(".vd-proces-row"));
+    const line = el.querySelector(".vd-proces-line");
+    if (reduce) { rows.forEach(r => { r.style.opacity = 1; r.style.transform = "none"; }); if (line) line.style.height = "100%"; return; }
+    const run = () => {
+      const total = 2000, step = total / rows.length;
+      if (line) { line.style.transition = "height " + total + "ms linear"; requestAnimationFrame(() => { line.style.height = "100%"; }); }
+      rows.forEach((r, i) => setTimeout(() => {
+        r.style.opacity = 1; r.style.transform = "none";
+        const dot = r.querySelector(".vd-proces-dot");
+        if (dot) dot.style.background = "var(--color-accent)";
+      }, i * step));
+    };
+    const io = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { run(); io.disconnect(); } });
+    }, { threshold: 0.25 });
+    io.observe(el);
+  };
+
+  setJourney = (el) => { this.journey = el; };
+  setSvg = (el) => { this.svg = el; };
+  setTrackPath = (el) => { this.trackPath = el; };
+  setDrawPath = (el) => { this.drawPath = el; };
+  setArrow = (el) => { this.arrow = el; };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => { this._raf = null; this.update(); });
+    };
+    this._measure = () => { this.measure(); this.update(); };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    window.addEventListener("resize", this._measure);
+    if (window.ResizeObserver && this.journey) {
+      this._ro = new ResizeObserver(this._measure);
+      this._ro.observe(this.journey);
+    }
+    // cross-page hash (#ponuda …) — the target renders client-side, so scroll after mount
+    this._scrollToHash = () => {
+      const id = (location.hash || "").replace("#", "");
+      if (!id) return;
+      const tryScroll = (n) => {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.pageYOffset - 8;
+          window.scrollTo({ top, behavior: "smooth" });
+        } else if (n > 0) {
+          setTimeout(() => tryScroll(n - 1), 120);
+        }
+      };
+      tryScroll(12);
+    };
+    setTimeout(this._scrollToHash, 80);
+    window.addEventListener("hashchange", this._scrollToHash);
+    // fonts/layout settle
+    setTimeout(this._measure, 60);
+    setTimeout(this._measure, 400);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(this._measure);
+    this._initReveal();
+    const onama = document.getElementById("onama");
+    if (onama) this.setCounters(onama);
+    this._initNavHide();
+    if (this.journey) {
+      this._paused = true;
+      this._journeyIO = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          this._paused = !e.isIntersecting;
+          if (e.isIntersecting && !this._nodesRevealed) {
+            this._nodesRevealed = true;
+            const nodes = this.journey.querySelectorAll(".vd-node");
+            const step = nodes.length > 1 ? 1000 / nodes.length : 0;
+            nodes.forEach((n, i) => setTimeout(() => n.classList.add("is-in"), i * step));
+          }
+        });
+      }, { threshold: 0.2 });
+      this._journeyIO.observe(this.journey);
+    }
+    this._initSvc();
+    this._onDocClick = (e) => {
+      if (!this.state.menuOpen) return;
+      const nav = (document.getElementById("dc-root") || document).querySelector("nav.nav");
+      if (nav && !nav.contains(e.target)) this.closeMenu();
+    };
+    document.addEventListener("click", this._onDocClick);
+    this._onEsc = (e) => { if (e.key === "Escape") this.closeMenu(); };
+    window.addEventListener("keydown", this._onEsc);
+    let seen = false;
+    try { seen = localStorage.getItem("vd9-intro-seen") === "1"; } catch (_) {}
+    if (seen) { this.setState({ loadPct: 100, loadDone: true }); return; }
+    try { localStorage.setItem("vd9-intro-seen", "1"); } catch (_) {}
+      this._loadTimer = setInterval(() => {
+      this.setState((s) => {
+        const next = Math.min(100, s.loadPct + Math.random() * 14 + 6);
+        if (next >= 100) {
+          clearInterval(this._loadTimer);
+          setTimeout(() => this.setState({ loadDone: true }), 350);
+        }
+        return { loadPct: next };
+      });
+    }, 510);
+  }
+  _initSvc() {
+    const root = document.getElementById("dc-root") || document;
+    const cards = Array.from(root.querySelectorAll(".vd-svc-reveal"));
+    if (!cards.length) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      cards.forEach((c) => c.classList.add("is-in")); return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        const delay = e.target.classList.contains("vd-svc-reveal-2") ? 150 : 0;
+        setTimeout(() => e.target.classList.add("is-in"), delay);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.2, rootMargin: "0px 0px -8% 0px" });
+    this._svcIO = io;
+    cards.forEach((c) => io.observe(c));
+    const grid = root.querySelector(".vd-svc-grid");
+    if (grid) {
+      const gio = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          grid.classList.add("is-run");
+          gio.unobserve(grid);
+        });
+      }, { threshold: 0.35 });
+      this._svcGridIO = gio;
+      gio.observe(grid);
+    }
+  }
+  _initNavHide() {
+    const nav = document.querySelector("nav.nav");
+    if (!nav) return;
+    let last = window.scrollY, ticking = false;
+    this._onNavScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const y = window.scrollY;
+        const dy = y - last;
+        if (Math.abs(dy) < 6) return;
+        if (this.state.menuOpen) { nav.classList.remove("vd-nav-hidden"); last = y; return; }
+        if (dy > 0 && y > 120) nav.classList.add("vd-nav-hidden");
+        else if (dy < 0) nav.classList.remove("vd-nav-hidden");
+        last = y;
+      });
+    };
+    window.addEventListener("scroll", this._onNavScroll, { passive: true });
+  }
+
+  _initReveal() {
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const root = document.getElementById("dc-root") || document;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+    }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+    this._revealIO = io;
+    const kio = new IntersectionObserver((es) => {
+      es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); kio.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    this._katIO = kio;
+    root.querySelectorAll(".vd-kat-grid > figure").forEach((fg, i) => {
+      fg.classList.add("vd-kat-rv");
+      fg.style.transitionDelay = ((i % 5) * 90) + "ms";
+      kio.observe(fg);
+    });
+    const pn = root.querySelector("#ponuda"); if (pn) io.observe(pn);
+    root.querySelectorAll("h1, h2, h3, p, .kicker").forEach((el) => {
+      if (el.closest(".vd-track, .vd-slidewin, .vd-node, form, nav, .vd-heroanim, #ponuda")) return;
+      el.classList.add("vd-reveal");
+      io.observe(el);
+    });
+  }
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._onScroll);
+    window.removeEventListener("resize", this._measure);
+    if (this._onDocClick) document.removeEventListener("click", this._onDocClick);
+    if (this._onEsc) window.removeEventListener("keydown", this._onEsc);
+    document.body.style.overflow = "";
+    if (this._ro) this._ro.disconnect();
+    if (this._slideTimer) clearInterval(this._slideTimer);
+    if (this._revealIO) this._revealIO.disconnect();
+    if (this._katIO) this._katIO.disconnect();
+    if (this._onNavScroll) window.removeEventListener("scroll", this._onNavScroll);
+    if (this._svcIO) this._svcIO.disconnect();
+    if (this._svcGridIO) this._svcGridIO.disconnect();
+    if (this._journeyIO) this._journeyIO.disconnect();
+    if (this._raf2) cancelAnimationFrame(this._raf2);
+  }
+
+  measure() {
+    if (!this.journey || !this.svg || !this.trackPath || !this.drawPath) return;
+    const jr = this.journey.getBoundingClientRect();
+    const W = this.journey.offsetWidth, H = this.journey.offsetHeight;
+    if (!W || !H) return;
+    this.svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    const nodes = Array.from(this.journey.querySelectorAll("[data-node]"));
+    if (nodes.length < 2) return;
+    const pts = nodes.map((n) => {
+      const r = n.getBoundingClientRect();
+      return { x: r.left - jr.left + r.width / 2, y: r.top - jr.top + r.height / 2 };
+    });
+    let d = `M ${pts[0].x} ${pts[0].y}`;
+    for (let i = 1; i < pts.length; i++) d += ` L ${pts[i].x} ${pts[i].y}`;
+    d += ` L ${pts[0].x} ${pts[0].y}`;
+    this.trackPath.setAttribute("d", d);
+    this.drawPath.setAttribute("d", d);
+    this._len = this.drawPath.getTotalLength();
+    // cumulative length at each node along the closed loop
+    const cum = [0];
+    let acc = 0;
+    for (let i = 1; i <= pts.length; i++) {
+      const a = pts[i - 1], b = pts[i % pts.length];
+      acc += Math.hypot(b.x - a.x, b.y - a.y);
+      cum.push(acc);
+    }
+    this._cum = cum;
+    const trail = 90;
+    this.drawPath.style.strokeDasharray = trail + " " + (this._len + trail);
+    this.drawPath.style.strokeDashoffset = "0";
+    this._trail = trail;
+    this._nodes = nodes;
+    this._npts = pts;
+  }
+
+  _reasonsWithIcons() {
+    const h = React.createElement;
+    const svg = (children) => h("svg", { width: 40, height: 40, viewBox: "0 0 24 24", fill: "none", stroke: "var(--color-accent)", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round", style: { flex: "none" } }, children);
+    // 01 sopstvena proizvodnja — brick/factory
+    const icoFactory = svg([
+      h("path", { key: "a", d: "M3 21h18" }),
+      h("path", { key: "b", d: "M5 21V9l5 3V9l5 3V6l4 2v13" })
+    ]);
+    // 02 prirodni materijali — leaf
+    const icoLeaf = svg([
+      h("path", { key: "a", d: "M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" }),
+      h("path", { key: "b", d: "M2 21c0-3 1.85-5.36 5.08-6" })
+    ]);
+    // 03 sve iz jedne ruke — trowel/tools
+    const icoTools = svg([
+      h("path", { key: "a", d: "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" })
+    ]);
+    // 04 za investitore i majstore — handshake/users
+    const icoUsers = svg([
+      h("path", { key: "a", d: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" }),
+      h("circle", { key: "b", cx: 9, cy: 7, r: 4 }),
+      h("path", { key: "c", d: "M22 21v-2a4 4 0 0 0-3-3.87" }),
+      h("path", { key: "d", d: "M16 3.13a4 4 0 0 1 0 7.75" })
+    ]);
+    const icons = [icoFactory, icoLeaf, icoTools, icoUsers];
+    const base = [
+      { step: 1, title: "Sopstvena proizvodnja", body: "Nismo preprodavci. Materijal pravimo sami, pa kontrolišemo kvalitet, boju i rokove." },
+      { step: 2, title: "Prirodni materijali", body: "Tradicionalna receptura, bez veštačkih smesa — izgled i osećaj prave, stare cigle." },
+      { step: 3, title: "Sve iz jedne ruke", body: "Proizvodnja i ugradnja kod istog izvođača. Jedan sagovornik, jasna odgovornost." },
+      { step: 4, title: "Za investitore i majstore", body: "Radimo direktno sa vlasnicima kuća i sa izvođačima kojima treba stabilan dobavljač." }
+    ];
+    return base.map((r, i) => Object.assign({}, r, { icon: icons[i] }));
+  }
+
+  _startLoop() {
+    return; // journey animation disabled — circles stay static
+    if (this._raf2 || !this._len) return;
+    const TRAVEL = 2000, PAUSE = 400;
+    const leg = TRAVEL + PAUSE;
+    const tick = (ts) => {
+      this._raf2 = requestAnimationFrame(tick);
+      if (!this._len || !this._cum || this._paused) return;
+      if (!this._t0) this._t0 = ts;
+      const n = this._nodes.length;
+      const total = leg * n;
+      const t = (ts - this._t0) % total;
+      const i = Math.floor(t / leg);
+      const local = t - i * leg;
+      const segStart = this._cum[i], segEnd = this._cum[i + 1];
+      let f = Math.min(1, local / TRAVEL);
+      f = f < 0.5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2; // easeInOutQuad
+      const at = segStart + (segEnd - segStart) * f;
+
+      const pt = this.drawPath.getPointAtLength(at);
+      const pt2 = this.drawPath.getPointAtLength(Math.min(this._len, at + 1));
+      const ang = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * 180 / Math.PI;
+      this.arrow.setAttribute("transform", `translate(${pt.x} ${pt.y}) rotate(${ang})`);
+      this.arrow.style.opacity = "1";
+      this.drawPath.style.strokeDashoffset = String(this._trail - at);
+
+      const activeIdx = local >= TRAVEL ? (i + 1) % n : -1;
+      this._nodes.forEach((node, k) => node.classList.toggle("is-active", k === activeIdx));
+    };
+    this._raf2 = requestAnimationFrame(tick);
+  }
+
+  update() {
+    // layout-only; the journey animation runs on its own loop
+  }
+
+  _oldUpdate() {
+    if (!this.journey || !this._len) return;
+    const vh = window.innerHeight;
+    const r = this.journey.getBoundingClientRect();
+    const start = vh * 0.88, end = vh * 0.18;
+    let p = (start - r.top) / (start - end);
+    p = Math.max(0, Math.min(1, p));
+
+    this.drawPath.style.strokeDashoffset = this._len * (1 - p);
+
+    // traveling arrow
+    if (this.arrow && this._len) {
+      const at = this._len * p;
+      const pt = this.drawPath.getPointAtLength(at);
+      const pt2 = this.drawPath.getPointAtLength(Math.min(this._len, at + 1));
+      const ang = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * 180 / Math.PI;
+      this.arrow.setAttribute("transform", `translate(${pt.x} ${pt.y}) rotate(${ang})`);
+      this.arrow.style.opacity = p > 0.01 && p < 0.999 ? "1" : "0";
+    }
+
+    // activate nodes as the arrow reaches each
+    if (this._nodes) {
+      const n = this._nodes.length;
+      this._nodes.forEach((node, i) => {
+        const thresh = i === 0 ? 0.02 : (i / (n - 1)) * 0.92;
+        node.classList.toggle("is-active", p >= thresh);
+      });
+    }
+  }
+
+  renderVals() {
+    const fmt = (t) => { t = Math.max(0, Math.floor(t || 0)); return Math.floor(t / 60) + ":" + String(t % 60).padStart(2, "0"); };
+    const pct = this.state.dur ? (this.state.cur / this.state.dur) * 100 : 0;
+    const slides = [1,2,3,4,5,6].map((n, i) => ({ src: "assets/gal-" + n + ".webp", opacity: i === this.state.slide ? 1 : 0 }));
+    return {
+      loadPct: this.state.loadPct + "%",
+      loadOpacity: this.state.loadDone ? 0 : 1,
+      heroClass: this.state.loadDone ? "vd-heroanim vd-hero-go" : "vd-heroanim",
+      loadVis: this.state.loadDone ? "hidden" : "visible",
+      setBA: this.setBA,
+      setProd: this.setProd,
+      setProces: this.setProces,
+      menuOpen: this.state.menuOpen,
+      menuClass: this.state.menuOpen ? "is-open" : "",
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      slides: slides,
+      sent: this.state.sent,
+      setVideo: this.setVideo,
+      togglePlay: this.togglePlay,
+      onSeek: this.onSeek,
+      playing: this.state.playing,
+      paused: !this.state.playing,
+      progressPct: pct + "%",
+      timeLabel: fmt(this.state.cur) + " / " + fmt(this.state.dur),
+      setJourney: this.setJourney,
+      setSvg: this.setSvg,
+      setTrackPath: this.setTrackPath,
+      setDrawPath: this.setDrawPath,
+      setArrow: this.setArrow,
+      notSent: !this.state.sent,
+      sentName: this.state.sentName,
+      onSubmit: (e) => {
+        e.preventDefault();
+        const form = e.target;
+        if (form.checkValidity && !form.checkValidity()) { form.reportValidity(); return; }
+        const fd = new FormData(form);
+        if ((fd.get("_honey") || "").toString().trim()) return;
+        const name = (fd.get("ime") || "").toString().trim() || "hvala";
+        fetch("https://formsubmit.co/ajax/vujicdekor@gmail.com", {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+          body: fd
+        }).then((r) => {
+          if (!r.ok) throw new Error("bad");
+          this.setState({ sent: true, sentName: name });
+        }).catch(() => {
+          alert("Slanje trenutno nije moguće. Pozovite 064 3875575 ili pišite na vujicdekor@gmail.com.");
+        });
+      },
+      products: [
+        { tag: "Enterijer", title: "Zidna obloga", body: "Ciglica za unutrašnje zidove — dnevne sobe, kuhinje, kamini, ugostiteljski prostori. Topla tekstura na svetlu.", icon: { __html: '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-6 9 6v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21V12h6v9"/></svg>' } },
+        { tag: "Fasada", title: "Fasadna opeka", body: "Otporna obloga za spoljne zidove i sokle. Otporna na vremenske uslove, izgled prave stare cigle.", icon: { __html: '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M3 14h18M8 4v5M16 9v5M8 14v6M16 14v6"/></svg>' } },
+        { tag: "Detalji", title: "Ugaoni elementi", body: "Ugaone ciglice koje zid obmotavaju bez vidljivog spoja, ivice, otvori, stubovi izgledaju kao pun zid.", icon: { __html: '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V8l8-4 8 4"/><path d="M4 20h16"/><path d="M12 4v16"/><path d="M12 12l8-4"/></svg>' } }
+      ],
+      steps: [
+        { num: "01", title: "Konsultacija", body: "Čujemo šta planirate — prostor, kvadratura, željeni izgled. Bez obaveze i naplate za dolazak na dogovor." },
+        { num: "02", title: "Uzorak i izbor", body: "Birate boju, teksturu i format iz uzoraka. Po potrebi radimo i po vašem modelu." },
+        { num: "03", title: "Proizvodnja", body: "Ciglicu pravimo u radionici, od prirodnih materijala. Vi dobijate tačno onoliko koliko posao traži." },
+        { num: "04", title: "Ugradnja i predaja", body: "Izlazimo na teren, ugrađujemo i fugujemo. Prostor ostavljamo čist, a rad pod garancijom." }
+      ],
+      reasons: this._reasonsWithIcons(),
+      _reasons: [
+        { step: 1, title: "Sopstvena proizvodnja", body: "Nismo preprodavci. Materijal pravimo sami, pa kontrolišemo kvalitet, boju i rokove." },
+        { step: 2, title: "Prirodni materijali", body: "Tradicionalna receptura, bez veštačkih smesa — izgled i osećaj prave, stare cigle." },
+        { step: 3, title: "Sve iz jedne ruke", body: "Proizvodnja i ugradnja kod istog izvođača. Jedan sagovornik, jasna odgovornost." },
+        { step: 4, title: "Za investitore i majstore", body: "Radimo direktno sa vlasnicima kuća i sa izvođačima kojima treba stabilan dobavljač." }
+      ],
+      faqs: [
+        { q: "Da li radite i proizvodnju i ugradnju?", a: "Da. Ciglicu proizvodimo u sopstvenoj radionici i ugrađujemo je na terenu. Možete uzeti oba ili samo materijal." },
+        { q: "Od čega je opeka napravljena?", a: "Od prirodnih materijala, po tradicionalnoj recepturi i uz ručnu izradu — zato ima izgled i teksturu prave stare cigle." },
+        { q: "Mogu li da dobijem uzorak pre porudžbine?", a: "Naravno. Na konsultaciji birate boju, teksturu i format iz naših uzoraka, pa se tek onda odlučujete." },
+        { q: "Kako dobijam cenu?", a: "Pošaljite upit kroz formu ili nas pozovite. Za tačnu cenu pomažu kvadratura, lokacija i da li je potrebna i ugradnja." },
+        { q: "Da li izlazite van Mionice?", a: "Da, po dogovoru. Javite lokaciju u upitu pa ćemo se dogovoriti oko dolaska i isporuke." }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
